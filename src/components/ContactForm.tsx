@@ -133,7 +133,7 @@ const ContactForm: React.FC = () => {
               rows={5}
             />
           </div>
-
+git remote -v
           <button type="submit">Submit Inquiry</button>
         </form>
       </div>
