@@ -3,6 +3,7 @@ import Portrait from "../assets/home-portrait.jpg";
 import CustomCake from "../assets/customCake.jpg";
 import WeddingCake from "../assets/weddingCake.jpg";
 import Desserts from "../assets/desserts.jpg";
+import "../style/homepage.css";
 
 const Home = () => {
   return (
@@ -13,8 +14,10 @@ const Home = () => {
           <img src={Hero} alt="Hero Pic" />
         </div>
         <div className="hero-content">
-          <h1 className="hero-title">SugarBossMiami</h1>
-          <h2 className="hero-headline">Your Custom Cake Destination</h2>
+          <div className="hero-header-group">
+            <h1 className="hero-title">SugarBossMiami</h1>
+            <h2 className="hero-headline">Your Custom Cake Destination</h2>
+          </div>
           <button className="hero-cta">Contact Us</button>
         </div>
       </section>
