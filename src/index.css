@@ -1,47 +1,48 @@
-/* index.css or equivalent */
-
-/* Global Box Sizing */
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth; /* Optional: smooth scrolling */
+  scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit; /* Inherit box-sizing from html for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-/* Body & HTML Base Styles */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Example font stack */
+  font-family: "Noto Sans Display", sans-serif;
+  font-optical-sizing: auto;
   line-height: 1.6;
   color: #333;
-  background-color: #f8f8f8; /* A light background color for the page */
-  min-height: 100vh; /* Ensure body takes full viewport height */
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  -webkit-font-smoothing: antialiased; /* Better font rendering on macOS/iOS */
-  -moz-osx-font-smoothing: grayscale; /* Better font rendering on macOS/iOS */
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Root React App Container */
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the root div takes full viewport height */
-  /* Optional: max-width and centering for the whole app */
-  /* max-width: 1400px; */
-  /* margin: 0 auto; */
+  min-height: 100vh;
 }
 
-/* General Typography Resets/Defaults */
-h1, h2, h3, h4, h5, h6, p {
-  margin-top: 0;
-  margin-bottom: 1rem; /* Consistent spacing below headings/paragraphs */
-}
-
-ul, ol {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-top: 0;
   margin-bottom: 1rem;
-  padding-left: 20px; /* Default list padding */
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 20px;
 }
