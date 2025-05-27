@@ -1,5 +1,5 @@
 .hero-section {
-  position: relative; /* Establishes a positioning context for absolute children */
+  position: relative;
   width: 100%;
 }
 
@@ -8,26 +8,26 @@
 }
 
 .hero-image-container img {
-  width: 100%; /* Make image span the full width */
-  height: 80vh; /* Set height to 80% of the viewport height - adjust as needed */
-  object-fit: cover; /* Cover the area, cropping if necessary, maintaining aspect ratio */
-  display: block; /* Removes extra space below the image */
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.4);
 }
 
 .hero-content {
-  position: absolute; /* Position content on top of the image */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack elements vertically */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Pushes title/headline up and CTA down */
-  padding: 50px; /* Add some padding around the content */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
-  /* Add a subtle overlay for better text readability - adjust color and opacity */
+
+  padding: 50px;
+  box-sizing: border-box;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.3) 0%,
@@ -37,9 +37,9 @@
 }
 
 .hero-header-group {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   position: relative;
 }
 
@@ -47,35 +47,297 @@
 .hero-headline {
   font-family: "Italianno", cursive;
   font-style: normal;
-  color: #ffffff; /* White text for contrast */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+  color: #ffffff;
+  text-shadow: 2px 2px 6px #00b7bd87;
   text-align: center;
-  margin: 0; /* Remove default margins */
+  margin: 0;
 }
 
 .hero-title {
-  font-size: 7em; /* Adjust size as needed */
+  font-size: 8em;
 }
 
 .hero-headline {
-  font-size: 3em; /* Adjust size as needed */
+  font-size: 4em;
   font-weight: 300;
+  margin-top: -0.5em;
+  margin-bottom: 1.6em;
 }
 
 .hero-cta {
-  padding: 15px 35px; /* Button padding */
-  font-size: 1.5em; /* Button text size */
-  background-color: #ff69b4; /* Example: Hot Pink - Choose a color that fits the brand */
-  color: #ffffff; /* White text */
-  border: none; /* No border */
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer; /* Pointer on hover */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-  margin-top: 4em;
-
+  padding: 15px 35px;
+  font-family: "Noto Sans Display", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #00b7bd3d;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-cta:hover {
+  background-color: #00d0d7;
+  transform: scale(1.05);
 }
 
-.hero-cta:hover {
-  background-color: #ff85c1; /* Lighter shade on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+.services-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.services-header-text {
+  margin: 6.5em 0em;
+}
+
+.services-title {
+  font-size: 4.5em;
+  color: #000000;
+  font-family: "Italianno", cursive;
+  font-weight: 500;
+}
+
+.services-subheading {
+  font-size: 1.5em;
+  font-weight: 500;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.services-columns {
+  display: flex;
+  justify-content: center;
+  gap: 10em;
+  flex-wrap: wrap;
+}
+
+.service-column {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  max-width: 440px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-image-container {
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.service-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.service-column .service-title {
+  font-size: 3em;
+  color: #0e9fa4f0;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: "Italianno", cursive;
+  font-weight: bold;
+}
+
+.service-description {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.gallery-cta {
+  background-color: #0e9fa4f0;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 35px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.gallery-cta:hover {
+  background-color: #7ee0e3f0;
+  transform: translateY(-2px);
+}
+
+.about-us-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-us-title {
+  font-size: 4.5em;
+  color: #000000;
+  margin-bottom: 40px;
+  font-family: "Italianno", cursive;
+  font-weight: bold;
+}
+
+.about-us-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  gap: 40px;
+}
+
+.about-us-content {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  color: #000000;
+  text-align: left;
+}
+
+.about-us-content h3 {
+  font-size: 2.2em;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.about-us-content h4 {
+  font-size: 1.2em;
+  margin-bottom: 50px;
+  font-style: italic;
+}
+
+.about-us-content p {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.about-us-image-container {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+
+  border-radius: 35px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-section {
+  padding: 40px 20px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.portfolio-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.portfolio-section h2 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+
+.portfolio-section .about-us-text {
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  color: #333;
+  line-height: 1.6;
+}
+
+.portfolio-carousel {
+  display: flex; 
+  overflow-x: scroll; 
+  -webkit-overflow-scrolling: touch; 
+  scroll-snap-type: x mandatory; 
+  padding-bottom: 20px; 
+  margin-bottom: 30px; 
+  gap: 15px; 
+}
+
+.portfolio-carousel::-webkit-scrollbar {
+  height: 8px; 
+}
+
+.portfolio-carousel::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+.portfolio-carousel::-webkit-scrollbar-thumb {
+  background: #87ceeb; 
+  border-radius: 10px;
+}
+
+.portfolio-carousel img {
+  width: 300px; 
+  height: 200px; 
+  object-fit: cover; 
+  flex-shrink: 0; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  scroll-snap-align: start; 
+}
+
+/* --- View Full Gallry Link --- */
+
+.portfolio-link {
+  display: inline-block; 
+  background-color: #87ceeb; 
+  color: #ffffff; 
+  padding: 12px 25px;
+  text-decoration: none; 
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; 
+}
+
+.portfolio-link:hover {
+  background-color: #4682b4; 
+}
+
+.another-carousel {
+  display: flex;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+  gap: 15px;
+}
+
+.another-carousel::-webkit-scrollbar {
+  height: 8px;
 }
