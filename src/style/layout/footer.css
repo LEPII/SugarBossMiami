@@ -1,0 +1,65 @@
+/* Footer Styles */
+.footer {
+  background-color: #0e9fa4f0; /* Your specified background color */
+  color: white; /* Text color for readability */
+  padding: 40px 20px; /* Padding inside the footer */
+  display: flex; /* Highlight: Enable Flexbox for column layout */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Highlight: Prevent columns from wrapping on desktop */
+  margin-top: 5em;
+}
+
+.footer-column {
+  padding: 0 20px; /* Padding for each column */
+}
+
+.footer-logo {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10em;
+}
+
+.footer-column h2 {
+  font-weight: lighter;
+}
+
+.footer-column p {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.footer-icon {
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+
+.footer-column a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #d1d1d1;
+}
+
+.social-links {
+  margin-top: 25px;
+  display: flex;
+  justify-content: start;
+  gap: 40px;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}

@@ -21,7 +21,7 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-header-group">
             <h1 className="hero-title">SugarBossMiami</h1>
-            <h2 className="hero-headline">" Your Custom Cake Destination "</h2>
+            <h2 className="hero-headline">Your Custom Cake Destination</h2>
           </div>
           <button className="hero-cta btn btn--primary">
             <PiCakeThin style={{ fontSize: "1.2em", marginRight: "15px" }} />
