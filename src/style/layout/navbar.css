@@ -78,7 +78,7 @@
   transition: transform 2s ease-out;
 }
 
-.navbar-button-wrapper { 
+.navbar-button-wrapper {
   transition: margin-right 2.5s ease-out;
 }
 
@@ -91,31 +91,16 @@
   position: relative;
   margin-left: 2em;
   padding: 10px 40px;
-  font-family: "Noto Sans Display", sans-serif;
-  font-optical-sizing: auto;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease,
-    border-style 1.3s ease;
-  display: inline-block;
   border: #fff;
   border-style: solid;
-  border-radius: 35px;
   background-color: transparent;
-  cursor: pointer;
-  white-space: nowrap;
 }
 
 .navbar-button-wrapper.show .navbar-button {
-  transform: translateY(0%) translateX(0);
-border-color: #ffffff57;
-
   opacity: 1;
 }
 
 .navbar-button:hover {
   background-color: #36d5e6d5;
-  color: #ffffff;
-  transform: scale(1.05);
   border-style: none;
 }
