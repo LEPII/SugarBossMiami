@@ -1,0 +1,19 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Italianno", cursive;
+  font-style: normal;
+  margin: 0;
+}
+
+h2 {
+  font-size: 4.5em;
+}
+
+.section-title {
+  color: #000000;
+  font-weight: 500;
+}

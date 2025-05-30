@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../style/navbar.css";
 import Logo from "../assets/logo1.png";
 
 const Navbar = () => {
@@ -10,7 +9,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const offset = window.scrollY;
-    if (offset > 50) {
+    if (offset > 100) {
       setScrolled(true);
       setShowButton(true);
     } else {
@@ -55,7 +54,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={`navbar-button-wrapper ${showButton ? "show" : ""}`}>
-          <button className="navbar-button">
+          <button className="navbar-button btn btn--primary">
             <Link to="/contact">Contact Us</Link>
           </button>
         </li>
