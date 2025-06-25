@@ -187,7 +187,7 @@ const ContactForm: React.FC = () => {
           </div>
 
           <button type="submit" disabled={!isValid || isSubmitting}>
-            Submit Inquiry
+            {isSubmitting ? "Submitting..." : "Submit Inquiry"}
           </button>
         </form>
       </div>
