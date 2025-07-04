@@ -9,21 +9,27 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const offset = window.scrollY;
-    if (offset > 100) {
+    if (location.pathname === "/") {
+      if (offset > 100) {
+        setScrolled(true);
+        setShowButton(true);
+      } else {
+        setScrolled(false);
+        setShowButton(false);
+      }
+    } else {
       setScrolled(true);
       setShowButton(true);
-    } else {
-      setScrolled(false);
-      setShowButton(false);
     }
   };
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [location.pathname, handleScroll]);
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
