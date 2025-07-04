@@ -1,17 +1,18 @@
-/* Footer Styles */
 .footer {
-  background-color: #0e9fa4f0; /* Your specified background color */
-  color: white; /* Text color for readability */
-  padding: 40px 20px; /* Padding inside the footer */
-  display: flex; /* Highlight: Enable Flexbox for column layout */
+  width: 100%;
+  background-color: #0e9fa4f0;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; /* Highlight: Prevent columns from wrapping on desktop */
+  flex-wrap: nowrap;
   margin-top: 5em;
+  z-index: 1000;
 }
 
 .footer-column {
-  padding: 0 20px; /* Padding for each column */
+  padding: 0 20px;
 }
 
 .footer-logo {
