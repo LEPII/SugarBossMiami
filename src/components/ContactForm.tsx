@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import "../style/components/form.css";
 
 const ORDER_ITEMS = [
   "custom cake",
@@ -107,7 +108,7 @@ const ContactForm: React.FC = () => {
   return (
     <div className="contact-container">
       <div className="contact-form">
-        <h3>Send us your inquiry:</h3>
+        <h2>Send us your inquiry:</h2>
 
         <form
           onSubmit={handleSubmit((data) => {
@@ -116,22 +117,30 @@ const ContactForm: React.FC = () => {
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" {...register("name")} />
-            {errors.name && <p>{errors.name.message} </p>}
+            {errors.name && (
+              <p className="error-message">{errors.name.message} </p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" {...register("email")} />
-            {errors.email && <p>{errors.email.message} </p>}
+            {errors.email && (
+              <p className="error-message">{errors.email.message} </p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="phone">Phone Number:</label>
             <input type="tel" id="phone" {...register("phone")} />
-            {errors.phone && <p>{errors.phone.message} </p>}
+            {errors.phone && (
+              <p className="error-message">{errors.phone.message} </p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="eventDate">Delivery Date:</label>
             <input type="date" id="eventDate" {...register("eventDate")} />
-            {errors.eventDate && <p>{errors.eventDate.message} </p>}
+            {errors.eventDate && (
+              <p className="error-message">{errors.eventDate.message} </p>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="budget">Budget (Optional): $</label>
@@ -141,7 +150,9 @@ const ContactForm: React.FC = () => {
               {...register("budget")}
               placeholder="e.g., 200"
             />
-            {errors.budget && <p>{errors.budget.message} </p>}
+            {errors.budget && (
+              <p className="error-message">{errors.budget.message} </p>
+            )}
           </div>
 
           <div className="form-group">

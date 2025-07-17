@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
 
@@ -7,23 +7,29 @@ const Navbar = () => {
   const [showButton, setShowButton] = useState(false);
   const location = useLocation();
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const offset = window.scrollY;
-    if (offset > 100) {
+    if (location.pathname === "/") {
+      if (offset > 100) {
+        setScrolled(true);
+        setShowButton(true);
+      } else {
+        setScrolled(false);
+        setShowButton(false);
+      }
+    } else {
       setScrolled(true);
       setShowButton(true);
-    } else {
-      setScrolled(false);
-      setShowButton(false);
     }
-  };
+  }, [location.pathname, setScrolled, setShowButton]); 
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [location.pathname, handleScroll]);
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
