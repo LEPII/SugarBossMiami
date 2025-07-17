@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
 
@@ -7,7 +7,7 @@ const Navbar = () => {
   const [showButton, setShowButton] = useState(false);
   const location = useLocation();
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const offset = window.scrollY;
     if (location.pathname === "/") {
       if (offset > 100) {
@@ -21,7 +21,7 @@ const Navbar = () => {
       setScrolled(true);
       setShowButton(true);
     }
-  };
+  }, [location.pathname, setScrolled, setShowButton]); 
 
   useEffect(() => {
     handleScroll();
