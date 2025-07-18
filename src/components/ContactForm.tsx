@@ -129,7 +129,7 @@ const ContactForm: React.FC = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="phone">Phone Number:</label>
+            <label htmlFor="phone">Phone Number: </label>
             <input type="tel" id="phone" {...register("phone")} />
             {errors.phone && (
               <p className="error-message">{errors.phone.message} </p>
@@ -143,13 +143,16 @@ const ContactForm: React.FC = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="budget">Budget (Optional): $</label>
-            <input
-              type="number"
-              id="budget"
-              {...register("budget")}
-              placeholder="e.g., 200"
-            />
+            <label htmlFor="budget">Budget (Optional): </label>
+            <div className="input-with-icon">
+              <span className="currency-symbol">$</span>
+              <input
+                type="number"
+                id="budget"
+                {...register("budget")}
+                placeholder="e.g., 200"
+              />
+            </div>
             {errors.budget && (
               <p className="error-message">{errors.budget.message} </p>
             )}
@@ -175,7 +178,7 @@ const ContactForm: React.FC = () => {
 
           {showOtherField && (
             <div className="form-group">
-              <label htmlFor="otherOrderItem">Please specify your order:</label>
+              <label htmlFor="otherOrderItem">* Please specify your order:</label>
               <textarea
                 id="otherOrderItem"
                 rows={3}
