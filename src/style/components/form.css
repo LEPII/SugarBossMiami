@@ -1,7 +1,7 @@
 .contact-container {
   width: 100%;
   max-width: 1000px;
-  margin: 200px auto;
+  margin: 0px auto;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -19,6 +19,7 @@
   text-align: center;
   margin-bottom: 30px;
   font-weight: 500;
+  font-size: 3em;
 }
 
 .form-group {
@@ -29,7 +30,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  font-size: 1.25em;
+  font-size: 1.2em;
 }
 
 .form-group input[type="text"],
@@ -47,13 +48,25 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.form-group textarea {
+  font-size: 1.5em;
+}
+
+.form-group input[type="date"] {
+  font-size: 1.3em;
+}
+
+.form-group input[type="number"] {
+  border: none;
+}
+
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group input[type="tel"]:focus,
 .form-group input[type="date"]:focus,
 .form-group input[type="number"]:focus,
 .form-group textarea:focus {
-  border-color: #3f51b5;
+  border-color: #0e9fa4f0;
   box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
   outline: none;
 }
@@ -85,8 +98,8 @@
 }
 
 .form-group input[type="checkbox"]:checked {
-  background-color: #3f51b5;
-  border-color: #3f51b5;
+  background-color: #0e9fa4f0;
+  border-color: #0e9fa4f0;
 }
 
 .form-group input[type="checkbox"]:checked::after {
@@ -116,6 +129,22 @@
   margin-bottom: 0;
   font-weight: 500;
 }
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.currency-symbol {
+  padding: 12px 10px;
+  background-color: #f0f0f0;
+  color: #555;
+  font-weight: 600;
+  border-right: 1px solid #ddd;
+}
 
 button[type="submit"] {
   display: block;
@@ -138,7 +167,7 @@ button[type="submit"]:hover:not(:disabled) {
 }
 
 button[type="submit"]:disabled {
-  background-color: #9fa8da;
+  background-color: #0e9fa4f0;
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.6;
 }

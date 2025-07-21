@@ -115,48 +115,35 @@ const ContactForm: React.FC = () => {
             reset();
           })}>
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">* Name:</label>
             <input type="text" id="name" {...register("name")} />
             {errors.name && (
               <p className="error-message">{errors.name.message} </p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">* Email:</label>
             <input type="email" id="email" {...register("email")} />
             {errors.email && (
               <p className="error-message">{errors.email.message} </p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="phone">Phone Number:</label>
+            <label htmlFor="phone">* Phone Number: </label>
             <input type="tel" id="phone" {...register("phone")} />
             {errors.phone && (
               <p className="error-message">{errors.phone.message} </p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="eventDate">Delivery Date:</label>
+            <label htmlFor="eventDate">* Delivery Date:</label>
             <input type="date" id="eventDate" {...register("eventDate")} />
             {errors.eventDate && (
               <p className="error-message">{errors.eventDate.message} </p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="budget">Budget (Optional): $</label>
-            <input
-              type="number"
-              id="budget"
-              {...register("budget")}
-              placeholder="e.g., 200"
-            />
-            {errors.budget && (
-              <p className="error-message">{errors.budget.message} </p>
-            )}
-          </div>
-
-          <div className="form-group">
-            <label>Which item(s) would you like to order?</label>
+            <label>* Which item(s) would you like to order?</label>
             {ORDER_ITEM_OPTIONS.map((item) => (
               <div key={item.id}>
                 <input
@@ -175,7 +162,9 @@ const ContactForm: React.FC = () => {
 
           {showOtherField && (
             <div className="form-group">
-              <label htmlFor="otherOrderItem">Please specify your order:</label>
+              <label htmlFor="otherOrderItem">
+                * Please specify your order:
+              </label>
               <textarea
                 id="otherOrderItem"
                 rows={3}
@@ -186,9 +175,23 @@ const ContactForm: React.FC = () => {
               )}
             </div>
           )}
-
           <div className="form-group">
-            <label htmlFor="specialRequests">Special Requests:</label>
+            <label htmlFor="budget">Budget (optional): </label>
+            <div className="input-with-icon">
+              <span className="currency-symbol">$</span>
+              <input
+                type="number"
+                id="budget"
+                {...register("budget")}
+                placeholder="e.g., 200"
+              />
+            </div>
+            {errors.budget && (
+              <p className="error-message">{errors.budget.message} </p>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="specialRequests">Special Requests (optional):</label>
             <textarea
               id="specialRequests"
               rows={5}
