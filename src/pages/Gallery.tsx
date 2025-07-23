@@ -11,7 +11,6 @@ interface GalleryImage {
     color: string[];
     decorations: string[];
     size: string[];
-    // Add more filter categories here as needed
   };
 const Gallery = () => {
   return (
