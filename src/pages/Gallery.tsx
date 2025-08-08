@@ -344,7 +344,7 @@ const Gallery = () => {
                     }}
                   />
                   <div className="card-body">
-                    <h3 className="card-title">{image.alt}</h3>
+                    <p className="card-title">{image.alt}</p>
                     <div className="card-tags">
                       {Object.values(image.filters)
                         .flat()
