@@ -5,6 +5,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/scrollToTop";
 import "./style/layout/app.css"
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <div className="app-wrapper">
         <Navbar />
+        <ScrollToTop/>
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />

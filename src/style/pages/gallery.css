@@ -112,7 +112,6 @@
 .gallery-card {
   background-color: #ffffff;
   border-radius: 1.75em;
-
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   overflow: hidden;
@@ -136,9 +135,10 @@
 }
 
 .card-title {
-  font-size: 2em;
-  font-weight: 300;
-  margin-bottom: 0.25rem;
+  font-size: 1em;
+  font-weight: 400;
+  margin-bottom: 1em;
+  font-style: italic;
 }
 
 .card-tags {
