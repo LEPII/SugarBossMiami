@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# SugarBossMiami 🍰  
+*A custom cake destination brought to life with React & TypeScript*  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📖 Overview  
+**SugarBossMiami** is a responsive, modern website for a Miami-based luxury cake bakery. Built with **React** and **TypeScript**, it serves as both an online portfolio for the bakery’s stunning creations and a point of contact for customers seeking custom cake orders.  
 
-## Available Scripts
+This project demonstrates frontend development skills, a clean UI design, and future scalability for features like image hosting with AWS and backend integration.  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features  
+- **Responsive Design** – Optimized for desktop, tablet, and mobile  
+- **Multi-Page Layout** – Home, Services/Menu, Gallery (with filters), and Contact  
+- **Gallery Filtering** – View cakes by category/style (planned feature)  
+- **Contact Form** – Customers can reach out for inquiries (planned backend integration)  
+- **Modern Styling** – Luxury baby blue theme to match brand identity  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠 Tech Stack  
+**Frontend:**  
+- React  
+- TypeScript  
+- CSS (custom styling)  
 
-### `npm test`
+**Deployment:**  
+- Netlify  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Planned Enhancements:**  
+- AWS S3 for image hosting  
+- Backend API for image management & contact form  
+- Server-side pagination for large gallery performance  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1️⃣ Clone the Repository  
+```bash
+git clone https://github.com/yourusername/sugarbossmiami.git
+cd sugarbossmiami
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2️⃣ Install Dependencies  
+```bash
+npm install
+```
 
-### `npm run eject`
+### 3️⃣ Run Locally  
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📂 Project Structure  
+```
+sugarbossmiami/
+│── public/         # Static assets
+│── src/
+│   ├── components/ # Reusable UI components
+│   ├── pages/      # Page components (Home, Services, Gallery, Contact)
+│   ├── styles/     # CSS styling
+│   └── App.tsx     # Main app entry
+│── package.json
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📬 Contact  
+Developed by **Luis Perez**  
+📧 Email: <lperezdev843@gmail.com>
+💼 Portfolio: <https://luiperportfolio.vercel.app/>
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📝 License  
+This project is licensed under the MIT License.  
