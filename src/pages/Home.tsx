@@ -9,10 +9,10 @@ import Cake3 from "../assets/cakes/cake3.jpg";
 import Cake4 from "../assets/cakes/cake4.jpg";
 import Cake5 from "../assets/cakes/cake5.jpg";
 import { PiCakeThin } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-image-container">
@@ -23,10 +23,10 @@ const Home = () => {
             <h1 className="hero-title">SugarBossMiami</h1>
             <h2 className="hero-headline">Your Custom Cake Destination</h2>
           </div>
-          <button className="hero-cta btn btn--primary">
+          <Link to="/contact" className="hero-cta btn btn--primary">
             <PiCakeThin style={{ fontSize: "1.2em", marginRight: "15px" }} />
             Order Now
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -56,7 +56,9 @@ const Home = () => {
               Each creation is a personalized masterpiece, ensuring your
               occasion is truly unforgettable.
             </p>
-            <button className="gallery-cta btn btn--primary">View More</button>
+            <Link to="/services" className="gallery-cta btn btn--primary">
+              View More
+            </Link>
           </div>
           <div className="service-column">
             <div className="service-image-container">
@@ -71,7 +73,9 @@ const Home = () => {
               your wedding theme, colors, and taste, ensuring a stunning and
               delicious centerpiece for your celebration of love.
             </p>
-            <button className="gallery-cta btn btn--primary">View More</button>
+            <Link to="/services" className="gallery-cta btn btn--primary">
+              View More
+            </Link>
           </div>
           <div className="service-column">
             <div className="service-image-container">
@@ -87,7 +91,9 @@ const Home = () => {
               prepared with the same passion and quality you expect from our
               cakes.
             </p>
-            <button className="gallery-cta btn btn--primary">View More</button>
+            <Link to="/services" className="gallery-cta btn btn--primary">
+              View More
+            </Link>
           </div>
         </div>
       </section>
@@ -137,9 +143,9 @@ const Home = () => {
           <img src={Cake5} alt="Hero Pic" />
         </div>
         <div className="another-carousel"></div>
-        <button className="portfolio-button btn btn--primary">
+        <Link to="/gallery" className="portfolio-button btn btn--primary">
           View Full Gallery
-        </button>
+        </Link>
       </section>
 
       <section className="testimonials-section">

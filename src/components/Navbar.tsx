@@ -60,9 +60,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={`navbar-button-wrapper ${showButton ? "show" : ""}`}>
-          <button className="navbar-button btn btn--primary">
-            <Link to="/contact">Contact Us</Link>
-          </button>
+          <Link to="/contact" className="navbar-button btn btn--primary">
+            Contact Us
+          </Link>
         </li>
       </ul>
     </nav>
