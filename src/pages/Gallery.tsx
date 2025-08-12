@@ -315,8 +315,8 @@ const Gallery = () => {
                     onClick={() => handleFilterChange(category.key, option)}
                     className={
                       selectedFilters[category.key]?.includes(option)
-                        ? "filter-button filter-button-active"
-                        : "filter-button"
+                        ? "filter-button btn filter-button-active"
+                        : "filter-button btn"
                     }>
                     {option.replace(/-/g, " ")}
                   </button>
