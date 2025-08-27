@@ -105,3 +105,56 @@
   background-color: #36d5e6d5;
   border-style: none;
 }
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+@media (max-width: 1024px) {
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(14, 159, 164, 0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    font-size: 1.5em;
+  }
+
+  .navbar-button {
+    margin-right: 0em;
+    transition: none;
+  }
+
+  .navbar-links.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 1.7em;
+    color: white;
+    cursor: pointer;
+    z-index: 1101;
+    margin-right: 2em;
+  }
+
+  .navbar-button-wrapper {
+    margin: 0;
+  }
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+}
