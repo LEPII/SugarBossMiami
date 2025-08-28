@@ -372,7 +372,6 @@
 }
 
 @media (max-width: 1024px) {
-  /* Hero section */
   .hero-title {
     font-size: 3em;
   }
@@ -383,16 +382,15 @@
     padding: 20px;
   }
 
-  /* About Us: stack vertically, image first */
   .about-us-container {
     flex-direction: column;
   }
   .about-us-image-container {
-    order: -1; /* ⭐ Put image above text */
+    order: -1;
     width: 100%;
   }
   .about-us-content {
-    text-align: center; /* center text on mobile */
+    text-align: center;
   }
   .about-us-title {
     font-size: 2.5em;
@@ -407,13 +405,12 @@
     font-size: 1em;
   }
 
-  /* Testimonials */
   .testimonial {
     display: flex;
     flex-direction: column;
-    width: 100%; /* ⭐ prevent overflow */
+    width: 100%;
     height: auto;
-    margin: 0 10px; /* small side padding */
+    margin: 0 10px;
   }
   .testimonial img {
     width: 100%;
@@ -427,14 +424,12 @@
     transform: none;
   }
 
-  /* Portfolio carousel images smaller */
   .portfolio-carousel img {
     width: 300px;
     height: 400px;
   }
 }
 
-/* Extra small mobile (phones <600px) */
 @media (max-width: 600px) {
   .hero-title {
     font-size: 2em;
