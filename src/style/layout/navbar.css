@@ -115,6 +115,22 @@
 }
 
 @media (max-width: 1024px) {
+  .navbar-logo .logo-link {
+    margin-left: 0;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-logo img {
+    height: 40px;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
   .navbar-links {
     position: fixed;
     top: 0;
@@ -143,7 +159,7 @@
 
   .hamburger {
     display: block;
-    font-size: 1.7em;
+    font-size: 1.3em;
     color: white;
     cursor: pointer;
     z-index: 1101;
@@ -151,8 +167,9 @@
   }
 
   .navbar-button-wrapper {
-    margin: 0;
+    margin-right: 5em;
   }
+
   .no-scroll {
     overflow: hidden;
     height: 100vh;

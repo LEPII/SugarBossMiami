@@ -41,6 +41,10 @@ const Navbar = () => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-logo">
@@ -72,7 +76,10 @@ const Navbar = () => {
             Gallery
           </Link>
         </li>
-        <li className={`navbar-button-wrapper ${showButton ? "show" : ""}`}>
+        <li
+          className={`navbar-button-wrapper ${
+            showButton && window.innerWidth > 1024 ? "show" : ""
+          }`}>
           <Link to="/contact" className="navbar-button btn btn--primary">
             Contact Us
           </Link>
