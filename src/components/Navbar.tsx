@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const handleScroll = useCallback(() => {
@@ -21,7 +23,7 @@ const Navbar = () => {
       setScrolled(true);
       setShowButton(true);
     }
-  }, [location.pathname, setScrolled, setShowButton]); 
+  }, [location.pathname, setScrolled, setShowButton]);
 
   useEffect(() => {
     handleScroll();
@@ -31,6 +33,18 @@ const Navbar = () => {
     };
   }, [location.pathname, handleScroll]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-logo">
@@ -39,7 +53,10 @@ const Navbar = () => {
           SugarBossMiami
         </Link>
       </div>
-      <ul className="navbar-links">
+      <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </div>
+      <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
         <li>
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>
             Home
@@ -59,7 +76,10 @@ const Navbar = () => {
             Gallery
           </Link>
         </li>
-        <li className={`navbar-button-wrapper ${showButton ? "show" : ""}`}>
+        <li
+          className={`navbar-button-wrapper ${
+            showButton && window.innerWidth > 1024 ? "show" : ""
+          }`}>
           <Link to="/contact" className="navbar-button btn btn--primary">
             Contact Us
           </Link>

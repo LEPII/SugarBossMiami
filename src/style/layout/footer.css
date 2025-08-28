@@ -8,7 +8,7 @@
   align-items: center;
   flex-wrap: nowrap;
   margin-top: 5em;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .footer-column {
@@ -63,4 +63,35 @@
 
 .social-icon:hover {
   transform: translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 3em;
+  }
+
+  .footer-logo {
+    margin-right: 0; 
+    margin-bottom: 20px;
+    max-width: 200px; 
+  }
+
+  .footer-column {
+    padding: 10px 0;
+  }
+
+  .footer-column p {
+    font-size: 1.2em;
+    justify-content: center; 
+  }
+
+  .social-links {
+    justify-content: center;
+    gap: 20px; 
+    margin-top: 15px;
+  }
 }
