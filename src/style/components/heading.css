@@ -9,11 +9,31 @@ h6 {
   margin: 0;
 }
 
-h1, h2 {
-  font-size: 4.5em;
+h1 {
+  font-size: 7em;
+}
+
+h2 {
+  font-size: 4em;
 }
 
 .section-title {
   color: #000000;
   font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 5em;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 4em;
+  }
 }

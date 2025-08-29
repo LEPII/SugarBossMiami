@@ -49,12 +49,7 @@
   text-align: center;
 }
 
-.hero-title {
-  font-size: 8em;
-}
-
 .hero-headline {
-  font-size: 4em;
   font-weight: 300;
   margin-top: -0.5em;
   margin-bottom: 1.6em;
@@ -70,17 +65,13 @@
 }
 
 .services-section {
-  padding: 60px 20px;
+  padding: 20px 20px;
   text-align: center;
   background-color: #f9f9f9;
 }
 
 .services-header-text {
   margin: 6.5em 0em;
-}
-
-.services-title {
-  font-size: 4.5em;
 }
 
 .services-subheading {
@@ -141,7 +132,6 @@
 
 .service-description {
   font-size: 1.1em;
-  color: #555;
   line-height: 1.6;
   margin-bottom: 25px;
   flex-grow: 1;
@@ -159,7 +149,7 @@
 }
 
 .about-us-section {
-  padding: 100px 20px;
+  padding: 50px 20px;
   text-align: center;
 }
 
@@ -176,32 +166,32 @@
 .about-us-content {
   flex: 1;
   min-width: 0;
-  text-align: center;
-  color: #000000;
   text-align: left;
 }
 
 .about-us-title {
-  font-size: 4.5em;
-  text-align: center;
-  margin-bottom: 0.5em;
+  font-size: 2em;
+  text-align: left;
+  font-family: "Noto Sans Display", sans-serif;
+  font-weight: 200;
+  font-style: italic;
 }
 
 .about-us-title-secondary {
-  font-size: 4em;
-  margin-bottom: -0.3em;
+  font-size: 5em;
+  margin-top: 30px;
+  line-height: 1;
 }
 
 .about-us-title-third {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  font-family: "Noto Sans Display", sans-serif;
-  font-weight: 400;
+  font-size: 3em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1;
 }
 
 .about-us-content p {
   font-size: 1.1em;
-  color: #555;
   line-height: 1.6;
 }
 
@@ -237,7 +227,7 @@
 .portfolio-section .about-us-text {
   max-width: 1000px;
   margin: 0 auto 50px auto;
-  color: #333;
+
   line-height: 1.6;
   font-size: 1.5em;
   font-weight: 500;
@@ -372,34 +362,23 @@
 }
 
 @media (max-width: 1024px) {
-  .hero-title {
-    font-size: 3em;
-  }
-  .hero-headline {
-    font-size: 1.5em;
-  }
-  .hero-content {
-    padding: 20px;
+  .services-header-text {
+    padding: 2em;
   }
 
   .about-us-container {
     flex-direction: column;
   }
   .about-us-image-container {
-    order: -1;
+    order: 1;
     width: 100%;
   }
   .about-us-content {
     text-align: center;
   }
+
   .about-us-title {
-    font-size: 2.5em;
-  }
-  .about-us-title-secondary {
-    font-size: 2em;
-  }
-  .about-us-title-third {
-    font-size: 1.2em;
+    text-align: center;
   }
   .about-us-content p {
     font-size: 1em;
@@ -431,22 +410,15 @@
 }
 
 @media (max-width: 600px) {
-  .hero-title {
-    font-size: 2em;
-  }
   .hero-headline {
-    font-size: 1.2em;
+    font-size: 2.5em;
+  }
+  .services-header-text {
+    margin: 2.5em 0em;
   }
 
-  .services-title {
-    font-size: 2em;
-  }
   .services-subheading {
     font-size: 1em;
-  }
-
-  .about-us-title {
-    font-size: 2em;
   }
 
   .testimonial-text {
