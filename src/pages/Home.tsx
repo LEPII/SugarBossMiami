@@ -176,7 +176,7 @@ const Home = () => {
                 ingredients truly shone through. Professional, talented, and a
                 pleasure to work with. My new go-to for custom cakes!"
               </p>
-              <p className="testimonial-author"> - Daddy Yankees </p>
+              <p className="testimonial-author"> - Daddy Yankee </p>
             </div>
           </div>
         </div>
