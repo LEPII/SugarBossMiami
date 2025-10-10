@@ -1,8 +1,10 @@
 import "../style/pages/servicespage.css";
+import { FaCamera } from "react-icons/fa";
 
 interface MenuItem {
   name: string;
   isPremium?: boolean;
+  hasImage?: boolean;
 }
 
 interface MenuCategory {
@@ -16,25 +18,25 @@ const menuData: MenuCategory[] = [
     items: [
       { name: "Vanilla Bean Dream" },
       { name: "Chocolate Decadence" },
-      { name: "Red Velvet Royale" },
+      { name: "Red Velvet Royale", hasImage: true },
       { name: "Lemon Zest Burst" },
       { name: "Strawberry Shortcake Swirl" },
-      { name: "Caramel Macchiato Delight", isPremium: true },
-      { name: "Pistachio Rosewater Dream", isPremium: true },
+      { name: "Caramel Macchiato Delight", isPremium: true, hasImage: true },
+      { name: "Pistachio Rosewater Dream", isPremium: true, hasImage: true },
     ],
   },
   {
     title: "- Cake Flavors -",
     items: [
-      { name: "Classic Vanilla" },
+      { name: "Classic Vanilla", hasImage: true },
       { name: "Rich Chocolate Fudge" },
       { name: "Velvety Red Velvet" },
       { name: "Lemon Sunshine" },
-      { name: "Almond Bliss" },
+      { name: "Almond Bliss", hasImage: true },
       { name: "Marble Swirl" },
-      { name: "Carrot Spice" },
-      { name: "Coconut Cream Dream", isPremium: true },
-      { name: "Chai Latte Spice", isPremium: true },
+      { name: "Carrot Spice", hasImage: true },
+      { name: "Coconut Cream Dream", isPremium: true, hasImage: true },
+      { name: "Chai Latte Spice", isPremium: true, hasImage: true },
     ],
   },
   {
@@ -47,16 +49,20 @@ const menuData: MenuCategory[] = [
       { name: "Lemon Curd" },
       { name: "Salted Caramel" },
       { name: "Chocolate Mousse" },
-      { name: "Dulce de Leche Delight", isPremium: true },
-      { name: "White Chocolate Raspberry Truffle", isPremium: true },
+      { name: "Dulce de Leche Delight", isPremium: true, hasImage: true },
+      {
+        name: "White Chocolate Raspberry Truffle",
+        isPremium: true,
+        hasImage: true,
+      },
     ],
   },
   {
     title: "- Frostings -",
     items: [
-      { name: "Classic Vanilla Buttercream" },
-      { name: "Chocolate Buttercream" },
-      { name: "Cream Cheese Frosting" },
+      { name: "Classic Vanilla Buttercream", hasImage: true },
+      { name: "Chocolate Buttercream", hasImage: true },
+      { name: "Cream Cheese Frosting", hasImage: true },
       {
         name: "Swiss Meringue Buttercream (various flavors available upon request)",
       },
@@ -104,7 +110,7 @@ const Services: React.FC = () => {
   return (
     <div className="service-container">
       <header className="main-header-section">
-        <h1 className="main-header-title">Crafted Cakes by SugarBossMiami:</h1>
+        <h1 className="main-header-title">Crafted Cakes by SugarBossMiami</h1>
         <h2 className="main-header-subtitle">
           Where Imagination Meets Deliciousness
         </h2>
@@ -117,9 +123,18 @@ const Services: React.FC = () => {
             <ul className="category-items-list">
               {category.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="menu-item">
-                  {item.name}
-                  {item.isPremium && (
-                    <span className="premium-indicator">*</span>
+                  <span>
+                    {item.name} 
+                    {item.isPremium && (
+                      <span className="premium-indicator"> *</span>
+                    )}
+                  </span>
+
+                  {item.hasImage && (
+                    <div className="menu-item-link">
+                         <span className="menu-item-view-text">View More</span> 
+                  <FaCamera className="menu-item-icon" />
+                    </div>
                   )}
                 </li>
               ))}

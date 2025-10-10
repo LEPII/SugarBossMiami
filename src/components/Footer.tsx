@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
         </p>
         <p>
           <FaEnvelope className="footer-icon" />
-          <a href="mailto:cakes@yourgodmother.com">cakes@yourgodmother.com</a>
+          <a href="mailto:sugarbossmiami@gmail.com">sugarbossmiami@gmail.com</a>
         </p>
         <div className="social-links">
           <a
