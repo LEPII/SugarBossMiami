@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import "../style/pages/gallery.css";
+import { FiChevronDown, FiX } from "react-icons/fi"; 
 
 interface GalleryImage {
   id: string;
@@ -240,6 +241,8 @@ const Gallery = () => {
     return initialFilters;
   });
 
+  const [openCategory, setOpenCategory] = useState<string>("type");
+
   const clearAllFilters = () => {
     setSelectedFilters(() => {
       const initialFilters: Record<string, string[]> = {};
@@ -267,6 +270,13 @@ const Gallery = () => {
     });
   };
 
+  const removeSingleFilter = (categoryKey: string, option: string) => {
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [categoryKey]: prev[categoryKey].filter((v) => v !== option),
+    }));
+  };
+
   const filteredImages = useMemo(() => {
     return galleryData.filter((image) => {
       for (const categoryKey in selectedFilters) {
@@ -290,6 +300,10 @@ const Gallery = () => {
     });
   }, [selectedFilters]);
 
+  const anyFilterActive = Object.values(selectedFilters).some(
+    (arr) => arr.length > 0
+  );
+
   return (
     <div className="gallery-container">
       <header className="gallery-header">
@@ -303,31 +317,73 @@ const Gallery = () => {
         <aside className="filter-sidebar">
           <h2 className="filter-title">Filter Gallery</h2>
 
-          {filterCategories.map((category) => (
-            <div key={category.key} className="filter-category">
-              <h3 className="filter-category-title">
-                {category.name.replace(/-/g, " ")}
-              </h3>
-              <div className="filter-options">
-                {category.options.map((option) => (
+          {anyFilterActive && (
+            <div className="active-filters-row">
+              {filterCategories.map((cat) =>
+                (selectedFilters[cat.key] || []).map((option) => (
                   <button
-                    key={option}
-                    onClick={() => handleFilterChange(category.key, option)}
-                    className={
-                      selectedFilters[category.key]?.includes(option)
-                        ? "filter-button btn filter-button-active"
-                        : "filter-button btn"
-                    }>
-                    {option.replace(/-/g, " ")}
+                    key={`${cat.key}-${option}`}
+                    className="active-filter-chip"
+                    onClick={() => removeSingleFilter(cat.key, option)}>
+                    <span className="chip-text">
+                      {option.replace(/-/g, " ")}
+                    </span>
+                    <FiX className="chip-x" />
                   </button>
-                ))}
-              </div>
+                ))
+              )}
             </div>
-          ))}
+          )}
 
-          <button onClick={clearAllFilters} className="clear-filters-button">
-            Clear All Filters
-          </button>
+          {anyFilterActive && (
+            <button
+              onClick={clearAllFilters}
+              className="clear-filters-button clear-filters-top">
+              Clear All Filters
+            </button>
+          )}
+
+          {filterCategories.map((category) => {
+            const isOpen = openCategory === category.key;
+            return (
+              <div
+                key={category.key}
+                className={`filter-category ${isOpen ? "open" : ""}`}>
+                <div className="filter-category-header">
+            
+                  <h3 className="filter-category-title">
+                    {category.name.replace(/-/g, " ")}
+                  </h3>
+     
+                  <button
+                    aria-expanded={isOpen}
+                    className={`filter-toggle ${isOpen ? "open" : ""}`}
+                    onClick={() =>
+                      setOpenCategory((prev) =>
+                        prev === category.key ? "" : (category.key as string)
+                      )
+                    }>
+                    <FiChevronDown />
+                  </button>
+                </div>
+
+                <div className="filter-options">
+                  {category.options.map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => handleFilterChange(category.key, option)}
+                      className={
+                        selectedFilters[category.key]?.includes(option)
+                          ? "filter-button btn filter-button-active"
+                          : "filter-button btn"
+                      }>
+                      {option.replace(/-/g, " ")}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </aside>
 
         <section className="gallery-content">
