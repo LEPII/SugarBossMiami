@@ -139,14 +139,14 @@
 }
 
 .filter-category.open .filter-options {
-  max-height: 999px; 
+  max-height: 999px;
   padding-top: 0.65rem;
 }
 
 .filter-button {
   padding: 0.5rem 1rem;
   border-radius: 100px;
-  border: #01080b47 solid;
+
   font-size: 1em;
   background-color: #0e9fa4f0;
   color: white;
@@ -187,7 +187,7 @@
 
 .gallery-image {
   width: 100%;
-  height: 13rem;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -246,4 +246,90 @@
 
 .show-all-button:hover {
   background-color: #36d5e6d5;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  padding: 2rem;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  background: #0e9fa4f0;
+  border-radius: 0.75rem;
+  animation: fadeIn 280ms ease;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.lightbox-img {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  animation: zoomIn 300ms ease;
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: #e5e5e5;
+  opacity: 0.9;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.94);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lightbox-img {
+    max-height: 85vh;
+  }
+  .lightbox-content {
+    padding: 0;
+  }
 }

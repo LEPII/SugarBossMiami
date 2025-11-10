@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import "../style/pages/gallery.css";
-import { FiChevronDown, FiX } from "react-icons/fi"; 
+import { FiChevronDown, FiX } from "react-icons/fi";
 
 interface GalleryImage {
   id: string;
@@ -243,6 +243,8 @@ const Gallery = () => {
 
   const [openCategory, setOpenCategory] = useState<string>("type");
 
+  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+
   const clearAllFilters = () => {
     setSelectedFilters(() => {
       const initialFilters: Record<string, string[]> = {};
@@ -350,11 +352,10 @@ const Gallery = () => {
                 key={category.key}
                 className={`filter-category ${isOpen ? "open" : ""}`}>
                 <div className="filter-category-header">
-            
                   <h3 className="filter-category-title">
                     {category.name.replace(/-/g, " ")}
                   </h3>
-     
+
                   <button
                     aria-expanded={isOpen}
                     className={`filter-toggle ${isOpen ? "open" : ""}`}
@@ -390,7 +391,12 @@ const Gallery = () => {
           {filteredImages.length > 0 ? (
             <div className="image-grid">
               {filteredImages.map((image) => (
-                <div key={image.id} className="gallery-card">
+                <div
+                  key={image.id}
+                  className="gallery-card"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setLightboxImage(image)}>
                   <img
                     src={image.src}
                     alt={image.alt}
@@ -426,6 +432,30 @@ const Gallery = () => {
           )}
         </section>
       </div>
+      {lightboxImage && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxImage(null)}>
+          <div
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={() => setLightboxImage(null)}>
+              <FiX />
+            </button>
+
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
+              className="lightbox-img"
+            />
+
+            <p className="lightbox-caption">{lightboxImage.alt}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
