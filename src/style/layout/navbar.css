@@ -119,18 +119,18 @@
     margin-left: 0;
     font-size: 2em;
     display: flex;
-    align-items: center;
   }
 
   .navbar-logo img {
     height: 40px;
+    margin-left: 1.2em;
   }
 
   .navbar {
     justify-content: space-between;
     padding: 10px 20px;
   }
-  
+
   .navbar-links {
     position: fixed;
     top: 0;
@@ -159,11 +159,13 @@
 
   .hamburger {
     display: block;
+    align-items: center;
     font-size: 1.3em;
     color: white;
     cursor: pointer;
     z-index: 1101;
     margin-right: 2em;
+    line-height: 1;
   }
 
   .navbar-button-wrapper {

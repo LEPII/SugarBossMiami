@@ -1,6 +1,6 @@
 .gallery-container {
   min-height: 100vh;
-  margin-top: 10em;
+  margin-top: 7em;
   padding: 1.5rem;
 }
 
@@ -369,6 +369,10 @@
     font-size: 1rem;
   }
 
+  .filter-category-header {
+    margin-top: 1rem;
+  }
+
   .results-count-desktop {
     display: none;
   }
@@ -403,6 +407,7 @@
     background: none;
     border: none;
     font-size: 1.75rem;
+    color: black;
   }
 
   .mobile-active-chips {
@@ -410,6 +415,7 @@
     flex-wrap: wrap;
     gap: 0.4rem;
     margin: 1rem;
+    color: black;
   }
   .mobile-apply-filters {
     width: 100%;

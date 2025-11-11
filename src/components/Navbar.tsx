@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
           <img src={Logo} alt="Hero Pic" />
-          SugarBossMiami
+          
         </Link>
       </div>
       <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
