@@ -4,7 +4,7 @@
   align-items: center;
   padding: 2rem;
   min-height: 100vh;
-  margin-top: 10em;
+  margin-top: 7em;
   box-sizing: border-box;
 }
 
@@ -26,6 +26,11 @@
   letter-spacing: 0.1em;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.no-break {
+  white-space: nowrap;
+ 
 }
 
 .main-header-subtitle {
@@ -131,7 +136,7 @@
   }
 
   .main-header-title {
-    font-size: 4em;
+    font-size: 3.5em;
   }
 
    .main-header-subtitle {

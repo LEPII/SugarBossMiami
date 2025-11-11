@@ -110,7 +110,9 @@ const Services: React.FC = () => {
   return (
     <div className="service-container">
       <header className="main-header-section">
-        <h1 className="main-header-title">Crafted Cakes by SugarBossMiami</h1>
+        <h1 className="main-header-title">
+          Crafted Cakes by <span className="no-break">SugarBossMiami</span>
+        </h1>
         <h2 className="main-header-subtitle">
           Where Imagination Meets Deliciousness
         </h2>
@@ -124,7 +126,7 @@ const Services: React.FC = () => {
               {category.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="menu-item">
                   <span>
-                    {item.name} 
+                    {item.name}
                     {item.isPremium && (
                       <span className="premium-indicator"> *</span>
                     )}
@@ -132,8 +134,8 @@ const Services: React.FC = () => {
 
                   {item.hasImage && (
                     <div className="menu-item-link">
-                         <span className="menu-item-view-text">View More</span> 
-                  <FaCamera className="menu-item-icon" />
+                      <span className="menu-item-view-text">View More</span>
+                      <FaCamera className="menu-item-icon" />
                     </div>
                   )}
                 </li>
