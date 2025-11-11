@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import "../style/pages/gallery.css";
 import { FiChevronDown, FiX } from "react-icons/fi";
+import { CiFilter } from "react-icons/ci";
 
 interface GalleryImage {
   id: string;
@@ -243,6 +244,8 @@ const Gallery = () => {
 
   const [openCategory, setOpenCategory] = useState<string>("type");
 
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
 
   const clearAllFilters = () => {
@@ -314,6 +317,19 @@ const Gallery = () => {
           Explore our custom creations by filtering your preferences.
         </p>
       </header>
+
+      <div className="mobile-filter-bar">
+        <button
+          type="button"
+          className="mobile-filter-button"
+          onClick={() => setIsMobileFilterOpen(true)}>
+          <CiFilter />
+          Filter
+        </button>
+        <span className="results-count-mobile">
+          {filteredImages.length} results
+        </span>
+      </div>
 
       <div className="gallery-layout">
         <aside className="filter-sidebar">
@@ -388,6 +404,9 @@ const Gallery = () => {
         </aside>
 
         <section className="gallery-content">
+          <span className="results-count-desktop">
+            {filteredImages.length} results
+          </span>
           {filteredImages.length > 0 ? (
             <div className="image-grid">
               {filteredImages.map((image) => (
@@ -454,6 +473,90 @@ const Gallery = () => {
 
             <p className="lightbox-caption">{lightboxImage.alt}</p>
           </div>
+        </div>
+      )}
+
+      {isMobileFilterOpen && (
+        <div className="mobile-filter-modal" role="dialog" aria-modal="true">
+          <div className="mobile-filter-header">
+            <button
+              type="button"
+              className="close-modal-btn"
+              onClick={() => setIsMobileFilterOpen(false)}>
+              <FiX />
+            </button>
+          </div>
+          <span className="results-count-mobile">
+            {filteredImages.length} results
+          </span>
+          {anyFilterActive && (
+            <div className="mobile-active-chips">
+              {filterCategories.map((cat) =>
+                (selectedFilters[cat.key] || []).map((opt) => (
+                  <button
+                    key={`m-${cat.key}-${opt}`}
+                    type="button"
+                    className="active-filter-chip"
+                    onClick={() => removeSingleFilter(cat.key, opt)}>
+                    {opt.replace(/-/g, " ")}
+                    <FiX className="chip-x" />
+                  </button>
+                ))
+              )}
+            </div>
+          )}
+
+          {filterCategories.map((category) => {
+            const isOpen = openCategory === category.key;
+            return (
+              <div
+                key={category.key}
+                className={`filter-category ${isOpen ? "open" : ""}`}>
+                <div className="filter-category-header">
+                  <h3 className="filter-category-title">
+                    {category.name.replace(/-/g, " ")}
+                  </h3>
+                  <button
+                    type="button"
+                    className={`filter-toggle ${isOpen ? "open" : ""}`}
+                    onClick={() =>
+                      setOpenCategory((prev) =>
+                        prev === category.key ? "" : category.key
+                      )
+                    }>
+                    <FiChevronDown />
+                  </button>
+                </div>
+
+                <div className="filter-options">
+                  {category.options.map((option) => {
+                    const active =
+                      selectedFilters[category.key]?.includes(option);
+                    return (
+                      <button
+                        key={`m-${option}`}
+                        type="button"
+                        onClick={() => handleFilterChange(category.key, option)}
+                        className={
+                          active
+                            ? "filter-button filter-button-active"
+                            : "filter-button"
+                        }>
+                        {option.replace(/-/g, " ")}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+
+          <button
+            type="button"
+            className="mobile-clear-filters"
+            onClick={clearAllFilters}>
+            Clear Filters
+          </button>
         </div>
       )}
     </div>
