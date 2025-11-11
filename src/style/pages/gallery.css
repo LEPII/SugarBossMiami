@@ -11,7 +11,7 @@
 
 .gallery-title {
   font-weight: 500;
-  font-size: 4em
+  font-size: 4em;
 }
 
 .gallery-subtitle {
@@ -411,6 +411,21 @@
     gap: 0.4rem;
     margin: 1rem;
   }
+  .mobile-apply-filters {
+    width: 100%;
+    padding: 0.75rem;
+    background: #0e9fa4;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 1rem;
+    transition: background-color 200ms ease;
+  }
+
+  .mobile-apply-filters:hover {
+    background: #36d5e6;
+  }
 
   .mobile-clear-filters {
     width: 100%;
@@ -420,6 +435,6 @@
     font-weight: 600;
     border: none;
     border-radius: 0.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 }

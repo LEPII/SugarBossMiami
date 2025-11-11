@@ -355,6 +355,7 @@ const Gallery = () => {
 
           {anyFilterActive && (
             <button
+              type="button"
               onClick={clearAllFilters}
               className="clear-filters-button clear-filters-top">
               Clear All Filters
@@ -550,7 +551,12 @@ const Gallery = () => {
               </div>
             );
           })}
-
+          <button
+            type="button"
+            className="mobile-apply-filters"
+            onClick={() => setIsMobileFilterOpen(false)}>
+            View Cakes
+          </button>
           <button
             type="button"
             className="mobile-clear-filters"
