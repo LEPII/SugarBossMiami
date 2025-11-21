@@ -313,9 +313,9 @@ const Gallery = () => {
     <div className="gallery-container">
       <header className="gallery-header">
         <h1 className="gallery-title">Our Sweet Gallery</h1>
-        <p className="gallery-subtitle">
+        <h2 className="gallery-subtitle">
           Explore our custom creations by filtering your preferences.
-        </p>
+        </h2>
       </header>
 
       <div className="mobile-filter-bar">
