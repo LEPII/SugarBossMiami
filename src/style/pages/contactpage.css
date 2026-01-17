@@ -37,3 +37,45 @@
   border-bottom-right-radius: 10px;
   overflow-y: auto;
 }
+
+@media (max-width: 600px) {
+  .contact-page-wrapper {
+    padding: 24px 0px;
+    margin: 6.5em auto 2em;
+    width: 100%;
+  }
+
+  .image-form-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-form-overlay {
+    padding: 0px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-form h2 {
+    font-size: 2.5em;
+  }
+
+  .contact-form-overlay,
+  .contact-form,
+  .contact-container {
+    min-width: 0;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
