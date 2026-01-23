@@ -34,12 +34,13 @@ const Home = () => {
         <div className="services-header-text">
           <h2 className="services-title section-title">Our Services</h2>
           <p className="services-subheading">
-            At SugarBossMiami, we believe every occasion deserves a delectable
-            centerpiece. We specialize in bringing your sweetest visions to
-            life, from custom cakes uniquely designed for any celebration, to
-            multi-tiered wedding cakes that become the heart of your special
-            day, and an enchanting array of delightful specialty desserts
-            perfect for any sweet craving or event.
+            SugarBossMiami specializes in custom cakes and desserts that steal
+            the spotlight.
+            <br />
+            <br />
+            From one-of-a-kind celebration cakes to elegant wedding tiers and
+            handcrafted specialty desserts, we create the perfect centerpiece
+            for every occasion.
           </p>
         </div>
         <div className="services-columns">
