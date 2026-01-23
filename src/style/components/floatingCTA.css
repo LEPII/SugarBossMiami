@@ -1,0 +1,30 @@
+.floating-cta {
+  position: fixed;
+  font-family: "Noto Sans Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  right: 35px;
+  bottom: 35px;
+  z-index: 1200;
+  padding: 12px 18px;
+  border-radius: 35px;
+  background-color: #00d0d7;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4em;
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.floating-cta.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-cta:hover {
+  background: rgba(54, 213, 230, 0.9);
+}

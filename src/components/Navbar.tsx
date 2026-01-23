@@ -8,6 +8,7 @@ const Navbar = () => {
   const [showButton, setShowButton] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const closeMenu = () => setIsOpen(false);
 
   const handleScroll = useCallback(() => {
     const offset = window.scrollY;
@@ -58,29 +59,29 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
         <li>
-          <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          <Link to="/"  onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
             Home
           </Link>
         </li>
         <li>
           <Link
-            to="/services"
+            to="/services" onClick={closeMenu}
             className={location.pathname === "/services" ? "active" : ""}>
             Services
           </Link>
         </li>
         <li>
           <Link
-            to="/gallery"
+            to="/gallery" onClick={closeMenu}
             className={location.pathname === "/gallery" ? "active" : ""}>
             Gallery
           </Link>
         </li>
         <li
           className={`navbar-button-wrapper ${
-            showButton && window.innerWidth > 1024 ? "show" : ""
+            showButton ? "show" : ""
           }`}>
-          <Link to="/contact" className="navbar-button btn btn--primary">
+          <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
             Contact Us
           </Link>
         </li>

@@ -76,12 +76,7 @@
 
   .footer-logo {
     margin-right: 0; 
-    margin-bottom: 20px;
     max-width: 200px; 
-  }
-
-  .footer-column {
-    padding: 10px 0;
   }
 
   .footer-column p {
@@ -91,7 +86,7 @@
 
   .social-links {
     justify-content: center;
-    gap: 20px; 
-    margin-top: 15px;
+    gap: 50px; 
+    margin-top: 25px;
   }
 }
