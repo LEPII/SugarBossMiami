@@ -77,6 +77,13 @@ const Navbar = () => {
             Gallery
           </Link>
         </li>
+          <li>
+          <Link
+            to="/faq" onClick={closeMenu}
+            className={location.pathname === "/faq" ? "active" : ""}>
+            FA Q
+          </Link>
+        </li>
         <li
           className={`navbar-button-wrapper ${
             showButton ? "show" : ""
