@@ -7,15 +7,18 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/scrollToTop";
 import "./style/layout/app.css"
+import FloatingCTA from "./components/FloatingCTA";
 
 function App() {
   return (
     <Router>
       <div className="app-wrapper">
         <Navbar />
-        <ScrollToTop/>
+        <ScrollToTop/>      
+        <FloatingCTA/>
         <div className="main-content">
           <Routes>
+      
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/gallery" element={<Gallery />} />

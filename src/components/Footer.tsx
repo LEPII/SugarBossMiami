@@ -9,7 +9,7 @@ import logo21 from "../assets/logo21.png";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" id="site-footer">
       <div className="footer-column">
         <img src={logo21} alt="SugarBossMiami Logo" className="footer-logo" />
       </div>
