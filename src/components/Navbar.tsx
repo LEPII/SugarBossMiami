@@ -65,9 +65,9 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            to="/services" onClick={closeMenu}
-            className={location.pathname === "/services" ? "active" : ""}>
-            Services
+            to="/menu" onClick={closeMenu}
+            className={location.pathname === "/menu" ? "active" : ""}>
+            Menu
           </Link>
         </li>
         <li>

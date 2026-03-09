@@ -106,7 +106,7 @@ const menuData: MenuCategory[] = [
   },
 ];
 
-const Services: React.FC = () => {
+const Menu: React.FC = () => {
   return (
     <div className="service-container">
       <header className="main-header-section">
@@ -154,4 +154,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default Menu;
