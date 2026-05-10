@@ -57,7 +57,7 @@ const Home = () => {
               Each creation is a personalized masterpiece, ensuring your
               occasion is truly unforgettable.
             </p>
-            <Link to="/services" className="gallery-cta btn btn--primary">
+            <Link to="/menu" className="gallery-cta btn btn--primary">
               View More
             </Link>
           </div>
@@ -74,7 +74,7 @@ const Home = () => {
               your wedding theme, colors, and taste, ensuring a stunning and
               delicious centerpiece for your celebration of love.
             </p>
-            <Link to="/services" className="gallery-cta btn btn--primary">
+            <Link to="/menu" className="gallery-cta btn btn--primary">
               View More
             </Link>
           </div>
@@ -92,7 +92,7 @@ const Home = () => {
               prepared with the same passion and quality you expect from our
               cakes.
             </p>
-            <Link to="/services" className="gallery-cta btn btn--primary">
+            <Link to="/menu" className="gallery-cta btn btn--primary">
               View More
             </Link>
           </div>
@@ -132,9 +132,7 @@ const Home = () => {
         <h3 className="portfolio-title section-title">Explore Our</h3>
         <h2 className="portfolio-title section-title">Portfolio</h2>
         <p className="about-us-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
-          venenatis est efficitur mollis. Curabitur at mattis nisl. Pellentesque
-          elementum nisl sed turpis facilisis accumsan.
+          Browse a collection of handcrafted desserts where creativity and flavor come together to make every celebration unforgettable. From elegant custom cakes to playful sweet treats, every piece is made with passion and care.
         </p>
         <div className="portfolio-carousel">
           <img src={Cake1} alt="Hero Pic" />
@@ -153,7 +151,7 @@ const Home = () => {
         <h2 className="testimonials-title section-title">Testimonials</h2>
         <div className="testimonials-container">
           <div className="testimonial">
-            <img src={Cake1} alt="Hero Pic" />
+            <img src={Cake4} alt="Hero Pic" />
             <div className="testimonial-text">
               <p className="testimonial-review">
                 "SugarBossMiami made our daughter's birthday unforgettable! The
@@ -162,11 +160,11 @@ const Home = () => {
                 about it! The entire process, from consultation to pickup, was
                 seamless. Highly recommend for any special occasion!"
               </p>
-              <p className="testimonial-author"> - PitBull</p>
+              <p className="testimonial-author"> - Leslie </p>
             </div>
           </div>
           <div className="testimonial">
-            <img src={Cake2} alt="Hero Pic" />
+            <img src={Cake3} alt="Hero Pic" />
             <div className="testimonial-text">
               <p className="testimonial-review">
                 "I can't say enough good things about SugarBossMiami! I needed a
@@ -177,7 +175,7 @@ const Home = () => {
                 ingredients truly shone through. Professional, talented, and a
                 pleasure to work with. My new go-to for custom cakes!"
               </p>
-              <p className="testimonial-author"> - Daddy Yankee </p>
+              <p className="testimonial-author"> - Rosa </p>
             </div>
           </div>
         </div>

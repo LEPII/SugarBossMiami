@@ -71,9 +71,7 @@
 .services-section {
   padding: 20px 20px;
   text-align: center;
-  background-color: #f9f9f9;
 }
-
 .services-header-text {
   margin: 6.5em 0em;
 }
@@ -93,7 +91,7 @@
 
 .service-column {
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 25px;
   max-width: 440px;
@@ -309,13 +307,16 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  background-color: #fff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.353);
   padding: 30px;
   margin: 0 auto;
   width: 1500px;
   height: 500px;
   border-radius: 10px;
+}
+
+.dark .testimonial {
+  background: rgba(2, 81, 142, 0.175);
 }
 
 .testimonial img {
@@ -364,6 +365,34 @@
   padding: 0 20px;
 }
 
+.dark .service-title {
+  color: white;
+}
+
+.dark .service-column {
+  background: rgba(2, 81, 142, 0.175);
+  border: 1px solid rgba(120, 180, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.dark .service-column:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 200, 255, 0.22);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.38),
+    0 0 18px rgba(80, 170, 255, 0.12),
+    0 0 42px rgba(60, 140, 255, 0.08);
+}
+
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 4em;
@@ -407,6 +436,7 @@
     margin: 0 10px;
     transform: none !important;
   }
+
   .testimonial img {
     width: 100%;
     height: auto;

@@ -5,8 +5,12 @@
   border: none;
   border-radius: 35px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
-    border-color 0.3s ease, border-style 1.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    border-style 1.3s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
@@ -14,11 +18,64 @@
 }
 
 .btn--primary {
-  background-color: #00d0d7;
+  background: rgba(0, 208, 215, 0.82);
+  border: 1px solid rgba(0, 208, 215, 0.28);
   color: #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 16px rgba(0, 208, 215, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #00d0d7;
   transform: scale(1.05);
+  background: rgba(0, 208, 215, 0.94);
+  border-color: rgba(0, 208, 215, 0.42);
+  box-shadow:
+    0 10px 24px rgba(0, 208, 215, 0.24),
+    0 0 18px rgba(0, 208, 215, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.dark .btn {
+  border: 1px solid rgba(120, 180, 255, 0.12);
+  background: rgba(2, 81, 142, 0.16);
+  color: #f4fbff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.dark .btn--primary {
+  background: rgba(0, 208, 215, 0.18);
+  border: 1px solid rgba(0, 208, 215, 0.22);
+  color: #f4fbff;
+  box-shadow:
+    0 0 12px rgba(0, 208, 215, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.dark .btn:hover {
+  transform: scale(1.05);
+  background: rgba(0, 208, 215, 0.22);
+  border-color: rgba(120, 220, 255, 0.28);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.32),
+    0 0 18px rgba(0, 208, 215, 0.14),
+    0 0 38px rgba(80, 170, 255, 0.08);
 }
