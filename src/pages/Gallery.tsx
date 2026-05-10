@@ -1,25 +1,20 @@
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "../style/pages/gallery.css";
 import { FiChevronDown, FiX } from "react-icons/fi";
 import { CiFilter } from "react-icons/ci";
+import { catalogData, type GalleryFilters } from "../data/catalogData";
 
 interface GalleryImage {
   id: string;
   src: string;
   alt: string;
-  filters: {
-    type: string[];
-    eventType: string[];
-    style: string[];
-    color: string[];
-    decorations: string[];
-    size: string[];
-  };
+  filters: GalleryFilters;
 }
 
 interface FilterCategory {
   name: string;
-  key: keyof GalleryImage["filters"];
+  key: keyof GalleryFilters;
   options: string[];
 }
 
@@ -124,183 +119,51 @@ const filterCategories: FilterCategory[] = [
   },
 ];
 
-const galleryData: GalleryImage[] = [
-  {
-    id: "1",
-    src: "https://placehold.co/400x300/E0BBE4/FFFFFF?text=Classic+Wedding+Cake",
-    alt: "Elegant classic wedding cake with buttercream flowers",
-    filters: {
-      type: ["custom-cake"],
-      eventType: ["marriage-celebrations"],
-      style: ["elegant", "classic"],
-      color: ["pastels", "monochromatic"],
-      decorations: ["fresh-flowers", "buttercream-flowers"],
-      size: ["large", "3-tier"],
-    },
-  },
-  {
-    id: "2",
-    src: "https://placehold.co/400x300/957DAD/FFFFFF?text=Birthday+Cupcakes",
-    alt: "Vibrant custom cupcakes with sprinkles for a birthday",
-    filters: {
-      type: ["custom-cupcake"],
-      eventType: ["children's-birthday-parties"],
-      style: ["whimsical", "fun"],
-      color: ["vibrant"],
-      decorations: ["sprinkles"],
-      size: ["individual"],
-    },
-  },
-  {
-    id: "3",
-    src: "https://placehold.co/400x300/D291BC/FFFFFF?text=Modern+Corporate+Cake",
-    alt: "Modern geometric cake with metallic details for a business function",
-    filters: {
-      type: ["custom-cake"],
-      eventType: ["business-functions"],
-      style: ["modern", "glamorous"],
-      color: ["metallics"],
-      decorations: ["edible-gold-leaf"],
-      size: ["medium", "2-tier"],
-    },
-  },
-  {
-    id: "4",
-    src: "https://placehold.co/400x300/FFC72C/FFFFFF?text=Baby+Shower+Cake",
-    alt: "Pastel whimsical cake with fondant figures for a baby welcoming event",
-    filters: {
-      type: ["custom-cake"],
-      eventType: ["baby-welcoming-events"],
-      style: ["whimsical", "fun"],
-      color: ["pastels"],
-      decorations: ["fondant-figures"],
-      size: ["small"],
-    },
-  },
-  {
-    id: "5",
-    src: "https://placehold.co/400x300/A2D2FF/FFFFFF?text=Rustic+Bridal+Cake",
-    alt: "Rustic semi-naked cake with fresh berries for a pre-wedding shower",
-    filters: {
-      type: ["custom-cake"],
-      eventType: ["pre-wedding-showers"],
-      style: ["rustic"],
-      color: ["earthy-tones"],
-      decorations: ["fresh-flowers", "edible-flowers"],
-      size: ["large", "3-tier"],
-    },
-  },
-  {
-    id: "6",
-    src: "https://placehold.co/400x300/FF9770/FFFFFF?text=Graduation+Cookies",
-    alt: "Hand-painted cookies for a graduation ceremony",
-    filters: {
-      type: ["custom-cookie"],
-      eventType: ["graduation-ceremonies"],
-      style: ["whimsical"],
-      color: ["vibrant"],
-      decorations: ["hand-painted-details"],
-      size: ["individual"],
-    },
-  },
-  {
-    id: "7",
-    src: "https://placehold.co/400x300/C1E1C1/FFFFFF?text=Elegant+Adult+Birthday+Cake",
-    alt: "Elegant monochromatic cake with buttercream flowers for an adult birthday",
-    filters: {
-      type: ["signature-cake"],
-      eventType: ["adult-birthday-parties"],
-      style: ["elegant"],
-      color: ["monochromatic"],
-      decorations: ["buttercream-flowers"],
-      size: ["medium"],
-    },
-  },
-  {
-    id: "8",
-    src: "https://placehold.co/400x300/F0E68C/FFFFFF?text=Engagement+Party+Cake",
-    alt: "Glamorous cake with edible gold leaf for an engagement party",
-    filters: {
-      type: ["custom-cake"],
-      eventType: ["engagement-parties"],
-      style: ["glamorous"],
-      color: ["metallics"],
-      decorations: ["edible-gold-leaf"],
-      size: ["large", "2-tier"],
-    },
-  },
-];
+const createEmptyFilters = (): Record<keyof GalleryFilters, string[]> => ({
+  type: [],
+  eventType: [],
+  style: [],
+  color: [],
+  decorations: [],
+  size: [],
+});
+
+const galleryData: GalleryImage[] = catalogData
+  .filter((item) => item.hasImage && item.src && item.alt && item.filters)
+  .map((item) => ({
+    id: item.id,
+    src: item.src!,
+    alt: item.alt!,
+    filters: item.filters!,
+  }));
 
 const Gallery = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [selectedFilters, setSelectedFilters] = useState<
-    Record<string, string[]>
-  >(() => {
-    const initialFilters: Record<string, string[]> = {};
-    filterCategories.forEach((category) => {
-      initialFilters[category.key] = [];
-    });
-    return initialFilters;
-  });
+    Record<keyof GalleryFilters, string[]>
+  >(createEmptyFilters);
 
   const [openCategory, setOpenCategory] = useState<string>("type");
-
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
-
-  const clearAllFilters = () => {
-    setSelectedFilters(() => {
-      const initialFilters: Record<string, string[]> = {};
-      filterCategories.forEach((category) => {
-        initialFilters[category.key] = [];
-      });
-      return initialFilters;
-    });
-  };
-
-  const handleFilterChange = (categoryKey: string, option: string) => {
-    setSelectedFilters((prevFilters) => {
-      const currentOptions = prevFilters[categoryKey] || [];
-      if (currentOptions.includes(option)) {
-        return {
-          ...prevFilters,
-          [categoryKey]: currentOptions.filter((item) => item !== option),
-        };
-      } else {
-        return {
-          ...prevFilters,
-          [categoryKey]: [...currentOptions, option],
-        };
-      }
-    });
-  };
-
-  const removeSingleFilter = (categoryKey: string, option: string) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [categoryKey]: prev[categoryKey].filter((v) => v !== option),
-    }));
-  };
-
+ 
   const filteredImages = useMemo(() => {
     return galleryData.filter((image) => {
       for (const categoryKey in selectedFilters) {
-        const activeSubFilters = selectedFilters[categoryKey];
+        const activeSubFilters = selectedFilters[
+          categoryKey as keyof GalleryFilters
+        ];
 
-        if (activeSubFilters.length === 0) {
-          continue;
-        }
+        if (activeSubFilters.length === 0) continue;
 
         const imageHasMatchingSubFilter = activeSubFilters.some((subFilter) =>
-          image.filters[categoryKey as keyof GalleryImage["filters"]]?.includes(
-            subFilter
-          )
+          image.filters[categoryKey as keyof GalleryFilters]?.includes(subFilter)
         );
 
-        if (!imageHasMatchingSubFilter) {
-          return false;
-        }
+        if (!imageHasMatchingSubFilter) return false;
       }
+
       return true;
     });
   }, [selectedFilters]);
@@ -308,6 +171,85 @@ const Gallery = () => {
   const anyFilterActive = Object.values(selectedFilters).some(
     (arr) => arr.length > 0
   );
+
+  useEffect(() => {
+    const filterKey = searchParams.get("filterKey");
+    const filterValue = searchParams.get("filterValue");
+
+    if (!filterKey || !filterValue) {
+      return;
+    }
+
+    const validCategory = filterCategories.find((cat) => cat.key === filterKey);
+
+    if (!validCategory) {
+      return;
+    }
+
+    setSelectedFilters((prev) => ({
+      ...createEmptyFilters(),
+      ...prev,
+      [validCategory.key]: [filterValue],
+    }));
+
+    setOpenCategory(validCategory.key);
+  }, [searchParams]);
+
+  const updateUrlFromFilters = (
+    nextFilters: Record<keyof GalleryFilters, string[]>
+  ) => {
+    const nextParams = new URLSearchParams();
+
+    const firstActiveCategory = filterCategories.find(
+      (category) => nextFilters[category.key].length > 0
+    );
+
+    if (firstActiveCategory) {
+      nextParams.set("filterKey", firstActiveCategory.key);
+      nextParams.set("filterValue", nextFilters[firstActiveCategory.key][0]);
+    }
+
+    setSearchParams(nextParams, { replace: true });
+  };
+
+  const handleFilterChange = (categoryKey: keyof GalleryFilters, option: string) => {
+    setSelectedFilters((prevFilters) => {
+      const currentOptions = prevFilters[categoryKey] || [];
+
+      const nextFilters = currentOptions.includes(option)
+        ? {
+          ...prevFilters,
+          [categoryKey]: currentOptions.filter((item) => item !== option),
+        }
+        : {
+          ...prevFilters,
+          [categoryKey]: [...currentOptions, option],
+        };
+
+      updateUrlFromFilters(nextFilters);
+      return nextFilters;
+    });
+  };
+
+  const clearAllFilters = () => {
+    const empty = createEmptyFilters();
+    setSelectedFilters(empty);
+    setSearchParams({}, { replace: true });
+  };
+
+  const removeSingleFilter = (categoryKey: keyof GalleryFilters, option: string) => {
+    setSelectedFilters((prev) => {
+      const nextFilters = {
+        ...prev,
+        [categoryKey]: prev[categoryKey].filter((v) => v !== option),
+      };
+
+      updateUrlFromFilters(nextFilters);
+      return nextFilters;
+    });
+  };
+
+
 
   return (
     <div className="gallery-container">
@@ -322,13 +264,12 @@ const Gallery = () => {
         <button
           type="button"
           className="mobile-filter-button"
-          onClick={() => setIsMobileFilterOpen(true)}>
+          onClick={() => setIsMobileFilterOpen(true)}
+        >
           <CiFilter />
           Filter
         </button>
-        <span className="results-count-mobile">
-          {filteredImages.length} results
-        </span>
+        <span className="results-count-mobile">{filteredImages.length} results</span>
       </div>
 
       <div className="gallery-layout">
@@ -342,10 +283,9 @@ const Gallery = () => {
                   <button
                     key={`${cat.key}-${option}`}
                     className="active-filter-chip"
-                    onClick={() => removeSingleFilter(cat.key, option)}>
-                    <span className="chip-text">
-                      {option.replace(/-/g, " ")}
-                    </span>
+                    onClick={() => removeSingleFilter(cat.key, option)}
+                  >
+                    <span className="chip-text">{option.replace(/-/g, " ")}</span>
                     <FiX className="chip-x" />
                   </button>
                 ))
@@ -357,30 +297,31 @@ const Gallery = () => {
             <button
               type="button"
               onClick={clearAllFilters}
-              className="clear-filters-button clear-filters-top">
+              className="clear-filters-button clear-filters-top"
+            >
               Clear All Filters
             </button>
           )}
 
           {filterCategories.map((category) => {
             const isOpen = openCategory === category.key;
+
             return (
               <div
                 key={category.key}
-                className={`filter-category ${isOpen ? "open" : ""}`}>
+                className={`filter-category ${isOpen ? "open" : ""}`}
+              >
                 <div className="filter-category-header">
-                  <h3 className="filter-category-title">
-                    {category.name.replace(/-/g, " ")}
-                  </h3>
+                  <h3 className="filter-category-title">{category.name}</h3>
 
                   <button
+                    type="button"
                     aria-expanded={isOpen}
                     className={`filter-toggle ${isOpen ? "open" : ""}`}
                     onClick={() =>
-                      setOpenCategory((prev) =>
-                        prev === category.key ? "" : (category.key as string)
-                      )
-                    }>
+                      setOpenCategory((prev) => (prev === category.key ? "" : category.key))
+                    }
+                  >
                     <FiChevronDown />
                   </button>
                 </div>
@@ -389,12 +330,14 @@ const Gallery = () => {
                   {category.options.map((option) => (
                     <button
                       key={option}
+                      type="button"
                       onClick={() => handleFilterChange(category.key, option)}
                       className={
                         selectedFilters[category.key]?.includes(option)
                           ? "filter-button btn filter-button-active"
                           : "filter-button btn"
-                      }>
+                      }
+                    >
                       {option.replace(/-/g, " ")}
                     </button>
                   ))}
@@ -405,9 +348,8 @@ const Gallery = () => {
         </aside>
 
         <section className="gallery-content">
-          <span className="results-count-desktop">
-            {filteredImages.length} results
-          </span>
+          <span className="results-count-desktop">{filteredImages.length} results</span>
+
           {filteredImages.length > 0 ? (
             <div className="image-grid">
               {filteredImages.map((image) => (
@@ -416,13 +358,15 @@ const Gallery = () => {
                   className="gallery-card"
                   role="button"
                   tabIndex={0}
-                  onClick={() => setLightboxImage(image)}>
+                  onClick={() => setLightboxImage(image)}
+                >
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="gallery-image"
                     onError={(e) => {
-                      e.currentTarget.src = `https://placehold.co/400x300/CCCCCC/666666?text=Image+Error`;
+                      e.currentTarget.src =
+                        "https://placehold.co/400x300/CCCCCC/666666?text=Image+Error";
                     }}
                   />
                   <div className="card-body">
@@ -452,17 +396,15 @@ const Gallery = () => {
           )}
         </section>
       </div>
+
       {lightboxImage && (
-        <div
-          className="lightbox-overlay"
-          onClick={() => setLightboxImage(null)}>
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}>
+        <div className="lightbox-overlay" onClick={() => setLightboxImage(null)}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               className="lightbox-close"
-              onClick={() => setLightboxImage(null)}>
+              onClick={() => setLightboxImage(null)}
+            >
               <FiX />
             </button>
 
@@ -483,13 +425,14 @@ const Gallery = () => {
             <button
               type="button"
               className="close-modal-btn"
-              onClick={() => setIsMobileFilterOpen(false)}>
+              onClick={() => setIsMobileFilterOpen(false)}
+            >
               <FiX />
             </button>
           </div>
-          <span className="results-count-mobile">
-            {filteredImages.length} results
-          </span>
+
+          <span className="results-count-mobile">{filteredImages.length} results</span>
+
           {anyFilterActive && (
             <div className="mobile-active-chips">
               {filterCategories.map((cat) =>
@@ -498,7 +441,8 @@ const Gallery = () => {
                     key={`m-${cat.key}-${opt}`}
                     type="button"
                     className="active-filter-chip"
-                    onClick={() => removeSingleFilter(cat.key, opt)}>
+                    onClick={() => removeSingleFilter(cat.key, opt)}
+                  >
                     {opt.replace(/-/g, " ")}
                     <FiX className="chip-x" />
                   </button>
@@ -509,30 +453,29 @@ const Gallery = () => {
 
           {filterCategories.map((category) => {
             const isOpen = openCategory === category.key;
+
             return (
               <div
                 key={category.key}
-                className={`filter-category ${isOpen ? "open" : ""}`}>
+                className={`filter-category ${isOpen ? "open" : ""}`}
+              >
                 <div className="filter-category-header">
-                  <h3 className="filter-category-title">
-                    {category.name.replace(/-/g, " ")}
-                  </h3>
+                  <h3 className="filter-category-title">{category.name}</h3>
                   <button
                     type="button"
                     className={`filter-toggle ${isOpen ? "open" : ""}`}
                     onClick={() =>
-                      setOpenCategory((prev) =>
-                        prev === category.key ? "" : category.key
-                      )
-                    }>
+                      setOpenCategory((prev) => (prev === category.key ? "" : category.key))
+                    }
+                  >
                     <FiChevronDown />
                   </button>
                 </div>
 
                 <div className="filter-options">
                   {category.options.map((option) => {
-                    const active =
-                      selectedFilters[category.key]?.includes(option);
+                    const active = selectedFilters[category.key]?.includes(option);
+
                     return (
                       <button
                         key={`m-${option}`}
@@ -542,7 +485,8 @@ const Gallery = () => {
                           active
                             ? "filter-button filter-button-active"
                             : "filter-button"
-                        }>
+                        }
+                      >
                         {option.replace(/-/g, " ")}
                       </button>
                     );
@@ -551,16 +495,20 @@ const Gallery = () => {
               </div>
             );
           })}
+
           <button
             type="button"
             className="mobile-apply-filters"
-            onClick={() => setIsMobileFilterOpen(false)}>
+            onClick={() => setIsMobileFilterOpen(false)}
+          >
             View Cakes
           </button>
+
           <button
             type="button"
             className="mobile-clear-filters"
-            onClick={clearAllFilters}>
+            onClick={clearAllFilters}
+          >
             Clear Filters
           </button>
         </div>

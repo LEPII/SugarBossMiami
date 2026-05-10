@@ -1,11 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const closeMenu = () => setIsOpen(false);
@@ -35,6 +38,11 @@ const Navbar = () => {
   }, [location.pathname, handleScroll]);
 
   useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
+
+  useEffect(() => {
     if (isOpen) {
       document.body.classList.add("no-scroll");
     } else {
@@ -51,15 +59,16 @@ const Navbar = () => {
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
           <img src={Logo} alt="Hero Pic" />
-          
+
         </Link>
       </div>
       <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
       <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
+
         <li>
-          <Link to="/"  onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
+          <Link to="/" onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
             Home
           </Link>
         </li>
@@ -77,7 +86,7 @@ const Navbar = () => {
             Gallery
           </Link>
         </li>
-          <li>
+        <li>
           <Link
             to="/faq" onClick={closeMenu}
             className={location.pathname === "/faq" ? "active" : ""}>
@@ -85,12 +94,20 @@ const Navbar = () => {
           </Link>
         </li>
         <li
-          className={`navbar-button-wrapper ${
-            showButton ? "show" : ""
-          }`}>
+          className={`navbar-button-wrapper ${showButton ? "show" : ""
+            }`}>
           <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
             Contact Us
           </Link>
+        </li>        <li>
+          <button
+            type="button"
+            className="theme-toggle-button"
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </button>
         </li>
       </ul>
     </nav>

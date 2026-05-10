@@ -1,110 +1,29 @@
 import "../style/pages/servicespage.css";
 import { FaCamera } from "react-icons/fa";
-
-interface MenuItem {
-  name: string;
-  isPremium?: boolean;
-  hasImage?: boolean;
-}
+import { Link } from "react-router-dom";
+import { catalogData, type CatalogItem } from "../data/catalogData";
 
 interface MenuCategory {
   title: string;
-  items: MenuItem[];
+  items: typeof catalogData;
 }
+const groupedMap = catalogData.reduce((map, item) => {
+  const section = item.menuSection;
 
-const menuData: MenuCategory[] = [
-  {
-    title: "- Cupcakes -",
-    items: [
-      { name: "Vanilla Bean Dream" },
-      { name: "Chocolate Decadence" },
-      { name: "Red Velvet Royale", hasImage: true },
-      { name: "Lemon Zest Burst" },
-      { name: "Strawberry Shortcake Swirl" },
-      { name: "Caramel Macchiato Delight", isPremium: true, hasImage: true },
-      { name: "Pistachio Rosewater Dream", isPremium: true, hasImage: true },
-    ],
-  },
-  {
-    title: "- Cake Flavors -",
-    items: [
-      { name: "Classic Vanilla", hasImage: true },
-      { name: "Rich Chocolate Fudge" },
-      { name: "Velvety Red Velvet" },
-      { name: "Lemon Sunshine" },
-      { name: "Almond Bliss", hasImage: true },
-      { name: "Marble Swirl" },
-      { name: "Carrot Spice", hasImage: true },
-      { name: "Coconut Cream Dream", isPremium: true, hasImage: true },
-      { name: "Chai Latte Spice", isPremium: true, hasImage: true },
-    ],
-  },
-  {
-    title: "- Cake Fillings -",
-    items: [
-      { name: "Vanilla Buttercream" },
-      { name: "Chocolate Ganache" },
-      { name: "Cream Cheese Frosting" },
-      { name: "Fresh Berry Compote (Strawberry, Raspberry, or Mixed Berry)" },
-      { name: "Lemon Curd" },
-      { name: "Salted Caramel" },
-      { name: "Chocolate Mousse" },
-      { name: "Dulce de Leche Delight", isPremium: true, hasImage: true },
-      {
-        name: "White Chocolate Raspberry Truffle",
-        isPremium: true,
-        hasImage: true,
-      },
-    ],
-  },
-  {
-    title: "- Frostings -",
-    items: [
-      { name: "Classic Vanilla Buttercream", hasImage: true },
-      { name: "Chocolate Buttercream", hasImage: true },
-      { name: "Cream Cheese Frosting", hasImage: true },
-      {
-        name: "Swiss Meringue Buttercream (various flavors available upon request)",
-      },
-      { name: "Whipped Ganache" },
-      { name: "Mirror Glaze (various colors)", isPremium: true },
-      { name: "Fondant (smooth finish, custom colors)", isPremium: true },
-    ],
-  },
-  {
-    title: "- Signature Cake Designs -",
-    items: [
-      { name: "Elegant Floral Cascade" },
-      { name: "Rustic Semi-Naked with Fresh Fruit" },
-      { name: "Drip Cake (Chocolate, White Chocolate, or Caramel)" },
-      { name: "Geometric Modern" },
-      { name: "Ombre Gradient" },
-      { name: "Hand-Painted Masterpiece", isPremium: true },
-      { name: "Sculpted Edible Art", isPremium: true },
-    ],
-  },
-  {
-    title: "- Dietary & Allergen-Friendly Options -",
-    items: [
-      { name: "Gluten-Free Vanilla" },
-      { name: "Gluten-Free Chocolate" },
-      { name: "Vegan Vanilla" },
-      { name: "Vegan Chocolate" },
-      { name: "Nut-Free Options (please inquire for specific flavors)" },
-    ],
-  },
-  {
-    title: "- Additional Enhancements -",
-    items: [
-      { name: "Edible Gold/Silver Leaf" },
-      { name: "Custom Cake Topper (personalized message)" },
-      { name: "Fresh Flower Arrangements" },
-      { name: "Macaron Tower" },
-      { name: "Custom Cookie Favors" },
-      { name: "Chocolate Dipped Strawberries", isPremium: true },
-    ],
-  },
-];
+  if (!map.has(section)) {
+    map.set(section, []);
+  }
+
+  map.get(section)!.push(item);
+  return map;
+}, new Map<string, CatalogItem[]>());
+
+const groupedMenuData: MenuCategory[] = Array.from(groupedMap).map(
+  ([title, items]) => ({
+    title,
+    items,
+  })
+);
 
 const Menu: React.FC = () => {
   return (
@@ -119,7 +38,7 @@ const Menu: React.FC = () => {
       </header>
 
       <main className="menu-content-area">
-        {menuData.map((category, index) => (
+        {groupedMenuData.map((category, index) => (
           <section key={index} className="menu-category-section">
             <h2 className="category-title">{category.title}</h2>
             <ul className="category-items-list">
@@ -132,12 +51,15 @@ const Menu: React.FC = () => {
                     )}
                   </span>
 
-                  {item.hasImage && (
-                    <div className="menu-item-link">
-                      <span className="menu-item-view-text">View More</span>
-                      <FaCamera className="menu-item-icon" />
-                    </div>
-                  )}
+                  {item.hasImage &&
+                    item.menuGalleryFilter && (
+                      <Link className="menu-item-link" to={`/gallery?filterKey=${encodeURIComponent(
+                        item.menuGalleryFilter.key
+                      )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}>
+                        <span className="menu-item-view-text">View More</span>
+                        <FaCamera className="menu-item-icon" />
+                      </Link>
+                    )}
                 </li>
               ))}
             </ul>

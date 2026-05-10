@@ -1,15 +1,42 @@
+:root {
+  --color-page-bg: #fff7fb;
+  --color-page-text: #2b1b24;
+}
+
+.dark {
+  --color-page-bg: #00181e;
+  --color-page-text: #edf6ff;
+}
+
+html,
+body {
+  background: var(--color-page-bg);
+  color: var(--color-page-text);
+}
+
 .app-wrapper {
-    display: flex;            
-    flex-direction: column;    
-    min-height: 100vh;       
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-page-bg);
+  color: var(--color-page-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html,
+body,
+.app-wrapper {
+  transition:
+    background-color 0.65s ease,
+    color 0.65s ease;
 }
 
 .main-content {
-    flex-grow: 1;            
-    box-sizing: border-box; 
+  flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .footer {
-    color: white;
-    flex-shrink: 0;
+  color: white;
+  flex-shrink: 0;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../style/components/floatingCTA.css"
+import "../style/components/floatingCTA.css";
 
 const FloatingCTA = () => {
   const [show, setShow] = useState(false);
@@ -14,16 +14,15 @@ const FloatingCTA = () => {
     }
 
     const onScroll = () => {
-      setShow(window.scrollY > 300); 
+      setShow(window.scrollY > 10);
     };
 
-    onScroll(); 
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [location.pathname]);
 
-
-   useEffect(() => {
+  useEffect(() => {
     const footer = document.getElementById("site-footer");
     if (!footer) return;
 
@@ -34,7 +33,7 @@ const FloatingCTA = () => {
       {
         root: null,
         threshold: 0.1,
-      }
+      },
     );
 
     observer.observe(footer);
@@ -47,8 +46,7 @@ const FloatingCTA = () => {
     <Link
       to="/contact"
       className={`floating-cta ${show && !hideForFooter ? "show" : ""}`}
-      aria-label="Contact Us"
-    >
+      aria-label="Contact Us">
       Order Today
     </Link>
   );
