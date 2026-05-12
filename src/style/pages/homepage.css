@@ -13,6 +13,7 @@
   object-fit: cover;
   display: block;
   filter: brightness(0.4);
+  will-change: transform;
 }
 
 .hero-content {
@@ -458,6 +459,9 @@
 }
 
 @media (max-width: 600px) {
+  .hero-image-container img {
+    height: clamp(500px, 80vh, 900px);
+  }
   .hero-title {
     font-size: 3em;
   }

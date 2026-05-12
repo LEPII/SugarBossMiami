@@ -1,4 +1,4 @@
-import Hero from "../assets/HeroPic.jpg";
+import Hero from "../assets/HeroPic.webp";
 import Portrait from "../assets/home-portrait.jpg";
 import CustomCake from "../assets/customCake.jpg";
 import WeddingCake from "../assets/weddingCake.jpg";
@@ -16,7 +16,11 @@ const Home = () => {
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-image-container">
-          <img src={Hero} alt="Hero Pic" />
+          <img
+            src={Hero}
+            alt="Hero Pic"
+            fetchPriority="high"
+          />
         </div>
         <div className="hero-content">
           <div className="hero-header-group">

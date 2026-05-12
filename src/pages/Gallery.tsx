@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../style/pages/gallery.css";
 import { FiChevronDown, FiX } from "react-icons/fi";
@@ -147,26 +147,20 @@ const Gallery = () => {
   const [openCategory, setOpenCategory] = useState<string>("type");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
- 
-  const filteredImages = useMemo(() => {
-    return galleryData.filter((image) => {
-      for (const categoryKey in selectedFilters) {
-        const activeSubFilters = selectedFilters[
-          categoryKey as keyof GalleryFilters
-        ];
 
-        if (activeSubFilters.length === 0) continue;
+  const filteredImages = galleryData.filter((image) => {
+    return Object.entries(selectedFilters).every(
+      ([categoryKey, selectedOptions]) => {
+        if (selectedOptions.length === 0) return true;
 
-        const imageHasMatchingSubFilter = activeSubFilters.some((subFilter) =>
-          image.filters[categoryKey as keyof GalleryFilters]?.includes(subFilter)
+        return selectedOptions.some((selectedOption) =>
+          image.filters[
+            categoryKey as keyof GalleryFilters
+          ].includes(selectedOption)
         );
-
-        if (!imageHasMatchingSubFilter) return false;
       }
-
-      return true;
-    });
-  }, [selectedFilters]);
+    );
+  });
 
   const anyFilterActive = Object.values(selectedFilters).some(
     (arr) => arr.length > 0
@@ -212,22 +206,17 @@ const Gallery = () => {
     setSearchParams(nextParams, { replace: true });
   };
 
-  const handleFilterChange = (categoryKey: keyof GalleryFilters, option: string) => {
+  const handleFilterChange = (
+    categoryKey: keyof GalleryFilters,
+    option: string
+  ) => {
     setSelectedFilters((prevFilters) => {
-      const currentOptions = prevFilters[categoryKey] || [];
+      const isAlreadySelected = prevFilters[categoryKey].includes(option);
 
-      const nextFilters = currentOptions.includes(option)
-        ? {
-          ...prevFilters,
-          [categoryKey]: currentOptions.filter((item) => item !== option),
-        }
-        : {
-          ...prevFilters,
-          [categoryKey]: [...currentOptions, option],
-        };
-
-      updateUrlFromFilters(nextFilters);
-      return nextFilters;
+      return {
+        ...prevFilters,
+        [categoryKey]: isAlreadySelected ? [] : [option],
+      };
     });
   };
 
