@@ -78,9 +78,29 @@
 }
 
 .services-subheading {
-  font-size: 1.5em;
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  max-width: 70vw;
   margin: 0 auto;
+  margin-top: 6em;
+}
+
+.services-line {
+  font-size: 3.2rem;
+  max-width: 65%;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.services-line-left {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.services-line-right {
+  align-self: flex-end;
+  text-align: right;
 }
 
 .services-columns {
@@ -129,7 +149,6 @@
   font-size: 3em;
   color: #0e9fa4f0;
   margin-top: 0;
-  margin-bottom: 15px;
   font-family: "Italianno", cursive;
   font-weight: bold;
 }
@@ -139,7 +158,7 @@
   line-height: 1.6;
   margin-bottom: 25px;
   flex-grow: 1;
-  text-align: start;
+  text-align: center;
 }
 
 .gallery-cta {
@@ -195,7 +214,7 @@
 }
 
 .about-us-content p {
-  font-size: 1.1em;
+  font-size: 1.4em;
   line-height: 1.6;
 }
 
@@ -351,7 +370,7 @@
 }
 
 .testimonial-text {
-  font-size: 1.1em;
+  font-size: 1.8em;
   font-style: italic;
   padding: 0px 50px;
   text-align: center;
@@ -360,7 +379,7 @@
 }
 
 .testimonial-author {
-  margin-top: 15px;
+  margin-top: 1.2em;
   font-weight: bold;
   font-size: 1.3em;
   padding: 0 20px;
@@ -399,13 +418,14 @@
     font-size: 4em;
   }
 
-  .services-header-text {
-    padding: 2em;
-  }
+.services-line {
+  max-width: 95%;
+} d
   .service-description {
     font-size: 1.2em;
   }
-  .about-us-container {
+
+.about-us-container {
     flex-direction: column;
   }
   .about-us-image-container {
@@ -433,7 +453,7 @@
     flex-direction: column;
     width: 90%;
     max-width: 700px;
-    height: auto;
+    height:fit-content;
     margin: 0 10px;
     transform: none !important;
   }
@@ -446,7 +466,8 @@
     transform: none !important;
   }
   .testimonial-text {
-    padding: 25px 30px;
+    padding: 0px 30px;
+    padding-top: 50px;
     font-size: 1.2em;
     transform: none;
     text-align: center;
@@ -476,6 +497,14 @@
 
   .services-subheading {
     font-size: 1.5em;
+    gap: 2rem;
+    margin-top: 2em;
+  }
+
+  .services-line {
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.2em;
   }
 
   .about-us-text {
@@ -485,6 +514,7 @@
   .testimonial {
     max-width: 500px;
     padding: 20px;
+    border-radius: 30px;
   }
 
   .testimonial-text {

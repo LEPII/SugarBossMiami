@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../style/pages/gallery.css";
-import { FiChevronDown, FiX } from "react-icons/fi";
+import { FiChevronDown, FiX, FiTrash2 } from "react-icons/fi";
 import { CiFilter } from "react-icons/ci";
 import { catalogData, type GalleryFilters } from "../data/catalogData";
 
@@ -410,36 +410,57 @@ const Gallery = () => {
 
       {isMobileFilterOpen && (
         <div className="mobile-filter-modal" role="dialog" aria-modal="true">
-          <div className="mobile-filter-header">
+          <div className="mobile-filter-topbar">
+
+            <div className="mobile-filter-header">
+              <button
+                type="button"
+                className="close-modal-btn"
+                onClick={() => setIsMobileFilterOpen(false)}
+              >
+                <FiX />
+              </button>
+            </div>
+
+            <span className="results-count-mobile">{filteredImages.length} results</span>
+            {anyFilterActive && (
+              <button
+                type="button"
+                className="mobile-clear-filters"
+                onClick={clearAllFilters}
+              >
+                <FiTrash2 />
+                Clear
+              </button>
+            )}
+
+            {anyFilterActive && (
+              <div className="mobile-active-chips">
+                {filterCategories.map((cat) =>
+                  (selectedFilters[cat.key] || []).map((opt) => (
+                    <button
+                      key={`m-${cat.key}-${opt}`}
+                      type="button"
+                      className="active-filter-chip"
+                      onClick={() => removeSingleFilter(cat.key, opt)}
+                    >
+                      {opt.replace(/-/g, " ")}
+                      <FiX className="chip-x" />
+                    </button>
+                  ))
+                )}
+              </div>
+            )}
             <button
               type="button"
-              className="close-modal-btn"
+              className="mobile-apply-filters"
               onClick={() => setIsMobileFilterOpen(false)}
             >
-              <FiX />
+              View Cakes
             </button>
+
+
           </div>
-
-          <span className="results-count-mobile">{filteredImages.length} results</span>
-
-          {anyFilterActive && (
-            <div className="mobile-active-chips">
-              {filterCategories.map((cat) =>
-                (selectedFilters[cat.key] || []).map((opt) => (
-                  <button
-                    key={`m-${cat.key}-${opt}`}
-                    type="button"
-                    className="active-filter-chip"
-                    onClick={() => removeSingleFilter(cat.key, opt)}
-                  >
-                    {opt.replace(/-/g, " ")}
-                    <FiX className="chip-x" />
-                  </button>
-                ))
-              )}
-            </div>
-          )}
-
           {filterCategories.map((category) => {
             const isOpen = openCategory === category.key;
 
@@ -484,25 +505,10 @@ const Gallery = () => {
               </div>
             );
           })}
-
-          <button
-            type="button"
-            className="mobile-apply-filters"
-            onClick={() => setIsMobileFilterOpen(false)}
-          >
-            View Cakes
-          </button>
-
-          <button
-            type="button"
-            className="mobile-clear-filters"
-            onClick={clearAllFilters}
-          >
-            Clear Filters
-          </button>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 
