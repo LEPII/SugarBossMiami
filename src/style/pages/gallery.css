@@ -258,6 +258,18 @@
   margin-top: 2em;
 }
 
+.gallery-card {
+  background-color: #ffffff;
+  border-radius: 1.75em;
+  box-shadow:
+    0 4px 16px -1px rgba(0, 0, 0, 0.192),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 .dark .gallery-card {
   background: rgba(2, 81, 142, 0.175);
   border: 1px solid rgba(120, 180, 255, 0.08);
@@ -441,6 +453,18 @@
   background: #0e9fa4c0;
   border-radius: 0.75rem;
   animation: fadeIn 280ms ease;
+}
+
+.dark .lightbox-content {
+  background: rgba(12, 38, 56, 0.82);
+  border: 1px solid rgba(120, 180, 255, 0.1);
+  color: #f4fbff;
+  border-radius: 1.75rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .lightbox-close {

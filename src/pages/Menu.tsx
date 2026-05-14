@@ -30,7 +30,7 @@ const Menu: React.FC = () => {
     <div className="service-container">
       <header className="main-header-section">
         <h1 className="main-header-title">
-          Crafted Cakes by <span className="no-break">SugarBossMiami</span>
+          Crafted Cakes
         </h1>
         <h2 className="main-header-subtitle">
           Where Imagination Meets Deliciousness
@@ -47,15 +47,15 @@ const Menu: React.FC = () => {
                   <span>
                     {item.name}
                     {item.isPremium && (
-                      <span className="premium-indicator"> *</span>
-                    )}
+                      <span className="premium-indicator">*</span>
+                    )} 
                   </span>
 
                   {item.hasImage &&
                     item.menuGalleryFilter && (
                       <Link className="menu-item-link" to={`/gallery?filterKey=${encodeURIComponent(
                         item.menuGalleryFilter.key
-                      )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}>
+                      )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}> 
                         <span className="menu-item-view-text">View More</span>
                         <FaCamera className="menu-item-icon" />
                       </Link>
