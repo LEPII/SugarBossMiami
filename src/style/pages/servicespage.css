@@ -35,7 +35,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem 4rem;
-  width: 50%;
+  width: 90%;
   max-width: 1200px;
   margin-bottom: 3rem;
 }
@@ -52,7 +52,7 @@
 .category-title {
   font-size: 2.4em;
   font-weight: 500;
-  margin-bottom: 1em;
+  margin-bottom: 0.4em;
   text-align: center;
   position: relative;
 }
@@ -70,13 +70,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+ 
 }
 
 .menu-item-name {
   font-size: 1.08em;
   font-weight: 400;
   line-height: 1.4;
+  text-align: center;  
 }
 .menu-item-link {
   display: flex;
