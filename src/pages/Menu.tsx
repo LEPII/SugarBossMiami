@@ -44,18 +44,19 @@ const Menu: React.FC = () => {
             <ul className="category-items-list">
               {category.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="menu-item">
-                  <span>
+                  <span className="menu-item-name">
                     {item.name}
                     {item.isPremium && (
                       <span className="premium-indicator">*</span>
-                    )} 
+                    )}
                   </span>
 
                   {item.hasImage &&
                     item.menuGalleryFilter && (
                       <Link className="menu-item-link" to={`/gallery?filterKey=${encodeURIComponent(
                         item.menuGalleryFilter.key
-                      )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}> 
+                      )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}>
+                        <br />
                         <span className="menu-item-view-text">View More</span>
                         <FaCamera className="menu-item-icon" />
                       </Link>
