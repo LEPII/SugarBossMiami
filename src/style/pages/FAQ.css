@@ -26,7 +26,7 @@
 
 .faq-section-title {
   font-size: 2rem;
-  color: #0e9fa4;
+  color: rgb(var(--brand-teal-rgb));
   font-weight: 600;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .faq-item {
-  border: 2px solid rgba(14, 159, 164, 0.35);
+  border: 1px solid rgba(var(--brand-teal-rgb), 0.35);
   border-radius: 18px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
@@ -47,7 +47,7 @@
   text-align: left;
   background: transparent;
   border: none;
-  color: #0e9fa4;
+  color: rgb(var(--brand-teal-rgb));
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -88,13 +88,6 @@
 }
 
 .dark .faq-item {
-  background: rgba(2, 81, 142, 0.175);
-  border: 1px solid rgba(120, 180, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,

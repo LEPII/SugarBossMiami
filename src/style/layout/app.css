@@ -1,6 +1,8 @@
 :root {
   --color-page-bg: #fff7fb;
   --color-page-text: #2b1b24;
+  --brand-teal-rgb: 14, 159, 164;
+  --brand-teal-light-rgb: 54, 213, 230;
 }
 
 .dark {

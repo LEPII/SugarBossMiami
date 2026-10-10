@@ -16,7 +16,7 @@
 }
 
 .navbar.scrolled {
-  background-color: #0e9fa4f0;
+  background-color: rgba(var(--brand-teal-rgb), 0.9412);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -107,7 +107,7 @@
 }
 
 .navbar-button:hover {
-  background-color: #36d5e6d5;
+  background-color: rgba(var(--brand-teal-light-rgb), 0.8353);
   border-style: none;
 }
 
@@ -175,7 +175,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(14, 159, 164, 0.97);
+    background: rgba(var(--brand-teal-rgb), 0.97);
     flex-direction: column;
     align-items: center;
     min-height: 100dvh;

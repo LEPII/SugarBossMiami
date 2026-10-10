@@ -68,7 +68,7 @@ const Gallery = () => {
             <button
               type="button"
               onClick={clearAllFilters}
-              className="clear-filters-button clear-filters-top"
+              className="clear-filters-top"
             >
               Clear All Filters
             </button>

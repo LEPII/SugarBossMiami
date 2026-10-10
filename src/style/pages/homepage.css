@@ -112,6 +112,7 @@
 
 .service-column {
   background-color: #fff;
+  border: 1px solid transparent;
   border-radius: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 25px;
@@ -147,7 +148,7 @@
 
 .service-column .service-title {
   font-size: 3em;
-  color: #0e9fa4f0;
+  color: rgba(var(--brand-teal-rgb), 0.9412);
   margin-top: 0;
   font-family: "Italianno", cursive;
   font-weight: bold;
@@ -376,13 +377,6 @@
 }
 
 .dark .service-column {
-  background: rgba(2, 81, 142, 0.175);
-  border: 1px solid rgba(120, 180, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -407,7 +401,7 @@
   .services-line {
     max-width: 95%;
   }
-  d .service-description {
+  .service-description {
     font-size: 1.2em;
   }
 
@@ -486,7 +480,7 @@
   }
 
   .about-us-text {
-    font-size: 22.2em;
+    font-size: 2.2em;
   }
 
   .testimonial {
