@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  background-color: #0e9fa4f0;
+  background-color: rgba(var(--brand-teal-rgb), 0.9412);
   border-top: 1px solid transparent;
   color: white;
   padding: 40px 20px;

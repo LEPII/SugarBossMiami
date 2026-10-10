@@ -148,7 +148,7 @@
 
 .service-column .service-title {
   font-size: 3em;
-  color: #0e9fa4f0;
+  color: rgba(var(--brand-teal-rgb), 0.9412);
   margin-top: 0;
   font-family: "Italianno", cursive;
   font-weight: bold;
