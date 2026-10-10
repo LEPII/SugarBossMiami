@@ -112,6 +112,7 @@
 
 .service-column {
   background-color: #fff;
+  border: 1px solid transparent;
   border-radius: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 25px;
@@ -376,13 +377,6 @@
 }
 
 .dark .service-column {
-  background: rgba(2, 81, 142, 0.175);
-  border: 1px solid rgba(120, 180, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,

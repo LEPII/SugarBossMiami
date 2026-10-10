@@ -1,4 +1,5 @@
 @import url("./base/reset.css");
+@import url("./base/glass-dark.css");
 @import url("./components/heading.css");
 @import url("./components/button.css");
 @import url("./layout/navbar.css");
