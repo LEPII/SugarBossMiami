@@ -407,7 +407,7 @@
   .services-line {
     max-width: 95%;
   }
-  d .service-description {
+  .service-description {
     font-size: 1.2em;
   }
 
@@ -486,7 +486,7 @@
   }
 
   .about-us-text {
-    font-size: 22.2em;
+    font-size: 2.2em;
   }
 
   .testimonial {

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="home-page">
+    <div>
       <section className="hero-section">
         <div className="hero-image-container">
           <img
@@ -91,8 +91,8 @@ const Home = () => {
       </section>
 
       <section className="portfolio-section">
-        <h3 className="portfolio-title section-title">Explore Our</h3>
-        <h2 className="portfolio-title section-title">Portfolio</h2>
+        <h3 className="section-title">Explore Our</h3>
+        <h2 className="section-title">Portfolio</h2>
         <p className="about-us-text">
           Browse a collection of handcrafted desserts where creativity and flavor come together to make every celebration unforgettable. From elegant custom cakes to playful sweet treats, every piece is made with passion and care.
         </p>
@@ -133,7 +133,7 @@ const Home = () => {
           <div className="testimonial">
             <img src={Cake4} alt="Hero Pic" />
             <div className="testimonial-text">
-              <p className="testimonial-review">
+              <p>
                 “SugarBossMiami brought our daughter’s birthday to life with a cake that was almost too beautiful to cut. Every detail was stunning, and the flavor was just as unforgettable. From start to finish, the experience felt effortless and personal.”
               </p>
               <p className="testimonial-author"> - Leslie </p>
@@ -142,7 +142,7 @@ const Home = () => {
           <div className="testimonial">
             <img src={Cake3} alt="Hero Pic" />
             <div className="testimonial-text">
-              <p className="testimonial-review">
+              <p>
                 “From the first conversation to the final presentation, SugarBossMiami exceeded every expectation. The custom cake was elegant, creative, and beautifully detailed — pairing perfectly with the red color of my beloved Jeep.”
               </p>
               <p className="testimonial-author"> - Rosa </p>

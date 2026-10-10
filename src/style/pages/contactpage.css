@@ -13,16 +13,6 @@
   font-weight: 500;
 }
 
-.image-form-container {
-  position: relative;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgb(0, 0, 0);
-}
-
 .contact-form-overlay {
   position: relative;
   top: 0;
@@ -43,11 +33,6 @@
     padding: 24px 0px;
     margin: 6.5em auto 2em;
     width: 100%;
-  }
-
-  .image-form-container {
-    width: 100%;
-    max-width: 100%;
   }
 
   .contact-form-overlay {
