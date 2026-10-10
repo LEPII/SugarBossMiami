@@ -1,3 +1,4 @@
+import "../style/pages/homepage.css";
 import Hero from "../assets/HeroPic.webp";
 import Portrait from "../assets/home-portrait.jpg";
 import CustomCake from "../assets/customCake.jpg";
