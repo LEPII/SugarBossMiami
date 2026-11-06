@@ -5,6 +5,7 @@ import { filterCategories } from "../data/galleryFilters";
 
 export interface GalleryImage {
   id: string;
+  slug: string;
   src: string;
   alt: string;
   filters: GalleryFilters;
@@ -23,6 +24,7 @@ const galleryData: GalleryImage[] = catalogData
   .filter((item) => item.hasImage && item.src && item.alt && item.filters)
   .map((item) => ({
     id: item.id,
+    slug: item.slug,
     src: item.src!,
     alt: item.alt!,
     filters: item.filters!,
@@ -80,8 +82,23 @@ export const useGalleryFilters = () => {
     setOpenCategory(validCategory.key);
   }, [searchParams]);
 
-  const updateUrlFromFilters = (
-    nextFilters: Record<keyof GalleryFilters, string[]>
+  useEffect(() => {
+    const itemSlug = searchParams.get("item");
+
+    if (!itemSlug) {
+      return;
+    }
+
+    const match = galleryData.find((image) => image.slug === itemSlug);
+
+    if (match) {
+      setLightboxImage(match);
+    }
+  }, [searchParams]);
+
+  const buildSearchParams = (
+    nextFilters: Record<keyof GalleryFilters, string[]>,
+    itemSlug: string | null
   ) => {
     const nextParams = new URLSearchParams();
 
@@ -94,7 +111,11 @@ export const useGalleryFilters = () => {
       nextParams.set("filterValue", nextFilters[firstActiveCategory.key][0]);
     }
 
-    setSearchParams(nextParams, { replace: true });
+    if (itemSlug) {
+      nextParams.set("item", itemSlug);
+    }
+
+    return nextParams;
   };
 
   const toggleCategory = (key: string) => {
@@ -104,8 +125,19 @@ export const useGalleryFilters = () => {
   const openMobileFilter = () => setIsMobileFilterOpen(true);
   const closeMobileFilter = () => setIsMobileFilterOpen(false);
 
-  const openLightbox = (image: GalleryImage) => setLightboxImage(image);
-  const closeLightbox = () => setLightboxImage(null);
+  const openLightbox = (image: GalleryImage) => {
+    setLightboxImage(image);
+    setSearchParams(buildSearchParams(selectedFilters, image.slug), {
+      replace: true,
+    });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setSearchParams(buildSearchParams(selectedFilters, null), {
+      replace: true,
+    });
+  };
 
   const handleFilterChange = (
     categoryKey: keyof GalleryFilters,
@@ -119,7 +151,10 @@ export const useGalleryFilters = () => {
         [categoryKey]: isAlreadySelected ? [] : [option],
       };
 
-      updateUrlFromFilters(nextFilters);
+      setSearchParams(
+        buildSearchParams(nextFilters, lightboxImage?.slug ?? null),
+        { replace: true }
+      );
       return nextFilters;
     });
   };
@@ -127,7 +162,9 @@ export const useGalleryFilters = () => {
   const clearAllFilters = () => {
     const empty = createEmptyFilters();
     setSelectedFilters(empty);
-    setSearchParams({}, { replace: true });
+    setSearchParams(buildSearchParams(empty, lightboxImage?.slug ?? null), {
+      replace: true,
+    });
   };
 
   const removeSingleFilter = (categoryKey: keyof GalleryFilters, option: string) => {
@@ -137,7 +174,10 @@ export const useGalleryFilters = () => {
         [categoryKey]: prev[categoryKey].filter((v) => v !== option),
       };
 
-      updateUrlFromFilters(nextFilters);
+      setSearchParams(
+        buildSearchParams(nextFilters, lightboxImage?.slug ?? null),
+        { replace: true }
+      );
       return nextFilters;
     });
   };
