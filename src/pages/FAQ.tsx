@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../style/pages/FAQ.css"
 import { faqSections } from "../data/faqData";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FAQ: React.FC = () => {
+  const { t, language } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
@@ -11,10 +13,10 @@ const FAQ: React.FC = () => {
 
   return (
     <section className="faq-page">
-      <h1 className="faq-title">Frequently Asked Questions</h1>
+      <h1 className="faq-title">{t.faq.title}</h1>
 
       <div className="faq-list">
-        {faqSections.map((section, sectionIdx) => (
+        {faqSections[language].map((section, sectionIdx) => (
           <div key={section.title} className="faq-section">
             <span className="faq-section-title">
               {section.title}

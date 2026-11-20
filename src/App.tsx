@@ -9,10 +9,12 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/scrollToTop";
 import "./style/layout/app.css"
 import FloatingCTA from "./components/FloatingCTA";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 function App() {
   return (
     <Router>
+      <LanguageProvider>
       <div className="app-wrapper">
         <Navbar />
         <ScrollToTop/>      
@@ -28,6 +30,7 @@ function App() {
         </div>
         <Footer />
       </div>
+      </LanguageProvider>
     </Router>
   );
 }

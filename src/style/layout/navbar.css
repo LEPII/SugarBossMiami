@@ -220,3 +220,28 @@
     height: 100vh;
   }
 }
+
+.lang-toggle-button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.lang-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: scale(1.05);
+}

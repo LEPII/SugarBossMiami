@@ -22,6 +22,7 @@ interface CatalogItem {
   hasImage?: boolean;
   src?: string;
   alt?: string;
+  altEs?: string;
   filters?: GalleryFilters;
 
   menuGalleryFilter?: {
@@ -39,6 +40,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake3,
     alt: "Red Velvet Royale cupcake",
+    altEs: "Cupcake Red Velvet Royale",
     filters: {
       type: ["signature-cupcake"],
       eventType: ["adult-birthday-parties"],
@@ -61,6 +63,7 @@ const catalogData: CatalogItem[] = [
     isPremium: true,
     src: Cake4,
     alt: "Caramel Macchiato Delight cupcake",
+    altEs: "Cupcake Caramel Macchiato Delight",
     filters: {
       type: ["custom-cupcake"],
       eventType: ["business-functions"],
@@ -82,6 +85,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake2,
     alt: "Classic Vanilla cake flavor",
+    altEs: "Pastel sabor Classic Vanilla",
     filters: {
       type: ["cake"],
       eventType: ["marriage-celebrations"],
@@ -104,6 +108,7 @@ const catalogData: CatalogItem[] = [
     isPremium: true,
     src: Cake4,
     alt: "Dulce de Leche Delight filling",
+    altEs: "Relleno Dulce de Leche Delight",
     filters: {
       type: ["cake"],
       eventType: ["adult-birthday-parties"],
@@ -125,6 +130,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake3,
     alt: "Classic Vanilla Buttercream frosting",
+    altEs: "Cobertura Classic Vanilla Buttercream",
     filters: {
       type: ["frosting"],
       eventType: ["festive-occasions"],
@@ -146,6 +152,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake4,
     alt: "Strawberry Shortcake Swirl cupcake",
+    altEs: "Cupcake Strawberry Shortcake Swirl",
     filters: {
       type: ["signature-cupcake"],
       eventType: ["baby-showers"],
@@ -167,6 +174,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake5,
     alt: "Oreo Cheesecake Crush cupcake",
+    altEs: "Cupcake Oreo Cheesecake Crush",
     filters: {
       type: ["custom-cupcake"],
       eventType: ["adult-birthday-parties"],
@@ -188,6 +196,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake5,
     alt: "Red Velvet cake",
+    altEs: "Pastel Red Velvet",
     filters: {
       type: ["cake"],
       eventType: ["marriage-celebrations"],
@@ -209,6 +218,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake1,
     alt: "Coconut Cream cake",
+    altEs: "Pastel Coconut Cream",
     filters: {
       type: ["cake"],
       eventType: ["festive-occasions"],
@@ -231,6 +241,7 @@ const catalogData: CatalogItem[] = [
     isPremium: true,
     src: Cake4,
     alt: "Salted Caramel filling",
+    altEs: "Relleno Salted Caramel",
     filters: {
       type: ["cake"],
       eventType: ["business-functions"],
@@ -252,6 +263,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake2,
     alt: "Chocolate Ganache frosting",
+    altEs: "Cobertura Chocolate Ganache",
     filters: {
       type: ["frosting"],
       eventType: ["adult-birthday-parties"],
@@ -274,6 +286,7 @@ const catalogData: CatalogItem[] = [
     isPremium: true,
     src: Cake5,
     alt: "Luxury Macaron Box",
+    altEs: "Caja de Macarons de Lujo",
     filters: {
       type: ["specialty-dessert"],
       eventType: ["bridal-showers"],
@@ -295,6 +308,7 @@ const catalogData: CatalogItem[] = [
     hasImage: true,
     src: Cake1,
     alt: "Custom Sugar Cookie Set",
+    altEs: "Set de Galletas de Azúcar Personalizadas",
     filters: {
       type: ["specialty-dessert"],
       eventType: ["baby-showers"],

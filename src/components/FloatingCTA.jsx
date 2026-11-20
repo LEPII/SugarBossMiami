@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../style/components/floatingCTA.css";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FloatingCTA = () => {
   const [show, setShow] = useState(false);
   const [hideForFooter, setHideForFooter] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (location.pathname === "/contact") {
@@ -46,8 +48,8 @@ const FloatingCTA = () => {
     <Link
       to="/contact"
       className={`floating-cta ${show && !hideForFooter ? "show" : ""}`}
-      aria-label="Contact Us">
-      Order Today
+      aria-label={t.nav.contact}>
+      {t.cta.orderToday}
     </Link>
   );
 };

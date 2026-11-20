@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
+import { useLanguage } from "../i18n/LanguageContext";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = () => {
@@ -11,6 +12,7 @@ const Navbar = () => {
   });
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t, toggleLanguage } = useLanguage();
   const closeMenu = () => setIsOpen(false);
 
   const handleScroll = useCallback(() => {
@@ -69,42 +71,53 @@ const Navbar = () => {
 
         <li>
           <Link to="/" onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
-            Home
+            {t.nav.home}
           </Link>
         </li>
         <li>
           <Link
             to="/menu" onClick={closeMenu}
             className={location.pathname === "/menu" ? "active" : ""}>
-            Menu
+            {t.nav.menu}
           </Link>
         </li>
         <li>
           <Link
             to="/gallery" onClick={closeMenu}
             className={location.pathname === "/gallery" ? "active" : ""}>
-            Gallery
+            {t.nav.gallery}
           </Link>
         </li>
         <li>
           <Link
             to="/faq" onClick={closeMenu}
             className={location.pathname === "/faq" ? "active" : ""}>
-            FA Q
+            {t.nav.faq}
           </Link>
         </li>
         <li
           className={`navbar-button-wrapper ${showButton ? "show" : ""
             }`}>
           <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
-            Contact Us
+            {t.nav.contact}
           </Link>
-        </li>        <li>
+        </li>
+        <li>
+          <button
+            type="button"
+            className="lang-toggle-button"
+            onClick={toggleLanguage}
+            aria-label={t.nav.toggleLanguage}
+          >
+            {t.nav.toggleLabel}
+          </button>
+        </li>
+        <li>
           <button
             type="button"
             className="theme-toggle-button"
             onClick={() => setIsDarkMode((prev) => !prev)}
-            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={isDarkMode ? t.nav.lightMode : t.nav.darkMode}
           >
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
