@@ -124,6 +124,17 @@ export const useGalleryFilters = () => {
     setOpenCategory((prev) => (prev === key ? "" : key));
   };
 
+  useEffect(() => {
+    if (!isMobileFilterOpen) return;
+    const phoneQuery = window.matchMedia("(max-width: 600px)");
+    const handleChange = () => {
+      if (!phoneQuery.matches) setIsMobileFilterOpen(false);
+    };
+    handleChange();
+    phoneQuery.addEventListener("change", handleChange);
+    return () => phoneQuery.removeEventListener("change", handleChange);
+  }, [isMobileFilterOpen]);
+
   const openMobileFilter = () => setIsMobileFilterOpen(true);
   const closeMobileFilter = () => setIsMobileFilterOpen(false);
 

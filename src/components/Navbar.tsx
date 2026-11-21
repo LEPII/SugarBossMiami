@@ -59,7 +59,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (!isOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent): void => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
@@ -67,6 +67,20 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      navRef.current?.classList.add("resizing");
+      clearTimeout(timer);
+      timer = setTimeout(() => navRef.current?.classList.remove("resizing"), 200);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
