@@ -16,7 +16,7 @@ const faqSectionsEn: FAQSection[] = [
     items: [
       {
         q: "How far in advance should I place my order?",
-        a: "We recommend placing orders at least 1–2 weeks in advance for custom cakes and large events. Availability may be limited during holidays and peak seasons.",
+        a: "We recommend placing orders at least 2 weeks in advance for custom cakes. For large events, we recommend at least 4 weeks in advance. Availability may be limited during holidays and peak seasons.",
       },
       {
         q: "What areas do you serve?",
@@ -36,11 +36,11 @@ const faqSectionsEn: FAQSection[] = [
       },
       {
         q: "Do you accommodate dietary restrictions?",
-        a: "We may offer select options for dietary preferences depending on the order. Please note that all desserts are prepared in a kitchen that may contain common allergens including nuts, dairy, and gluten.",
+        a: "We are happy to discuss dietary restrictions or allergies before placing your order. While our standard recipes are not gluten-free, nut-free, dairy-free, or made to accommodate other dietary restrictions, we may be able to source alternative ingredients if we are given enough advance notice. Please note that accommodations are not guaranteed, and because our kitchen regularly handles common allergens, we cannot guarantee that any product will be completely free from cross-contact.",
       },
       {
         q: "Can I send inspiration photos?",
-        a: "Absolutely. Inspiration photos are encouraged and help guide the design process while still allowing each creation to remain unique.",
+        a: "Absolutely! Inspiration photos are encouraged and are best sent as early as possible. They help guide the design process while allowing each creation to remain unique. To ensure every order receives our full attention, we are unable to provide progress or in-process photos while your cake is being made.",
       },
       {
         q: "Do you offer edible images or custom toppers?",
@@ -48,7 +48,7 @@ const faqSectionsEn: FAQSection[] = [
       },
       {
         q: "Do you provide cake stands or cutting utensils?",
-        a: "Cake stands may be available for select event orders. Please inquire during your consultation for availability and rental details.",
+        a: "Cake stands may be available for select event orders. Please inquire during your consultation for availability. Cutting utensils are not included by default but can be provided upon request for an additional fee.",
       },
       {
         q: "What cake sizes do you offer?",
@@ -70,11 +70,11 @@ const faqSectionsEn: FAQSection[] = [
       },
       {
         q: "When is final payment due?",
-        a: "Final payment is typically due before pickup or delivery unless otherwise discussed during booking.",
+        a: "Final payment is due at least one week before your scheduled pickup or delivery date, unless otherwise agreed upon during the booking process.",
       },
       {
         q: "What payment methods do you accept?",
-        a: "We currently accept common digital payment methods and cash for select orders.",
+        a: "We currently accept Zelle, Cash App, PayPal, Venmo, Apple Pay, and cash.",
       },
       {
         q: "Are delivery fees included?",
@@ -138,7 +138,7 @@ const faqSectionsEs: FAQSection[] = [
     items: [
       {
         q: "¿Con cuánta anticipación debo hacer mi pedido?",
-        a: "Recomendamos hacer los pedidos con al menos 1–2 semanas de anticipación para pasteles personalizados y eventos grandes. La disponibilidad puede ser limitada durante días festivos y temporadas altas.",
+        a: "Recomendamos hacer los pedidos de pasteles personalizados con al menos 2 semanas de anticipación. Para eventos grandes, recomendamos al menos 4 semanas de anticipación. La disponibilidad puede ser limitada durante días festivos y temporadas altas.",
       },
       {
         q: "¿Qué áreas cubren?",
@@ -158,11 +158,11 @@ const faqSectionsEs: FAQSection[] = [
       },
       {
         q: "¿Atienden restricciones alimentarias?",
-        a: "Podemos ofrecer algunas opciones para preferencias alimentarias según el pedido. Ten en cuenta que todos los postres se preparan en una cocina que puede contener alérgenos comunes, incluyendo nueces, lácteos y gluten.",
+        a: "Con gusto hablamos sobre restricciones alimentarias o alergias antes de que hagas tu pedido. Aunque nuestras recetas estándar no son sin gluten, sin nueces, sin lácteos ni están adaptadas a otras restricciones alimentarias, es posible que podamos conseguir ingredientes alternativos si se nos avisa con suficiente anticipación. Ten en cuenta que las adaptaciones no están garantizadas y, como en nuestra cocina se manejan alérgenos comunes con regularidad, no podemos garantizar que ningún producto esté completamente libre de contaminación cruzada.",
       },
       {
         q: "¿Puedo enviar fotos de inspiración?",
-        a: "¡Por supuesto! Las fotos de inspiración son bienvenidas y ayudan a guiar el proceso de diseño, permitiendo que cada creación siga siendo única.",
+        a: "¡Por supuesto! Las fotos de inspiración son bienvenidas y es mejor enviarlas lo antes posible. Ayudan a guiar el proceso de diseño, permitiendo que cada creación siga siendo única. Para que cada pedido reciba toda nuestra atención, no podemos enviar fotos del progreso mientras se prepara tu pastel.",
       },
       {
         q: "¿Ofrecen imágenes comestibles o toppers personalizados?",
@@ -170,7 +170,7 @@ const faqSectionsEs: FAQSection[] = [
       },
       {
         q: "¿Proporcionan bases para pasteles o utensilios para cortar?",
-        a: "Es posible que haya bases para pasteles disponibles para algunos pedidos de eventos. Consulta durante tu cita sobre la disponibilidad y los detalles de alquiler.",
+        a: "Es posible que haya bases para pasteles disponibles para algunos pedidos de eventos. Consulta durante tu cita sobre la disponibilidad. Los utensilios para cortar no están incluidos, pero se pueden proporcionar a pedido por un cargo adicional.",
       },
       {
         q: "¿Qué tamaños de pastel ofrecen?",
@@ -192,11 +192,11 @@ const faqSectionsEs: FAQSection[] = [
       },
       {
         q: "¿Cuándo se debe hacer el pago final?",
-        a: "El pago final normalmente se realiza antes de la recogida o entrega, a menos que se acuerde lo contrario al reservar.",
+        a: "El pago final debe realizarse al menos una semana antes de la fecha programada de recogida o entrega, a menos que se acuerde lo contrario al hacer la reserva.",
       },
       {
         q: "¿Qué métodos de pago aceptan?",
-        a: "Actualmente aceptamos métodos de pago digitales comunes y efectivo para algunos pedidos.",
+        a: "Actualmente aceptamos Zelle, Cash App, PayPal, Venmo, Apple Pay y efectivo.",
       },
       {
         q: "¿Están incluidos los cargos de entrega?",
