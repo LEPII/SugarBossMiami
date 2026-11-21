@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
+import { useLanguage } from "../i18n/LanguageContext";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = () => {
@@ -10,7 +11,9 @@ const Navbar = () => {
     return localStorage.getItem("theme") === "dark";
   });
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const location = useLocation();
+  const { t, toggleLanguage } = useLanguage();
   const closeMenu = () => setIsOpen(false);
 
   const handleScroll = useCallback(() => {
@@ -43,7 +46,7 @@ const Navbar = () => {
   }, [isDarkMode]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && window.matchMedia("(max-width: 768px)").matches) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
@@ -54,8 +57,19 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
           <img src={Logo} alt="Hero Pic" />
@@ -69,45 +83,54 @@ const Navbar = () => {
 
         <li>
           <Link to="/" onClick={closeMenu} className={location.pathname === "/" ? "active" : ""}>
-            Home
+            {t.nav.home}
           </Link>
         </li>
         <li>
           <Link
             to="/menu" onClick={closeMenu}
             className={location.pathname === "/menu" ? "active" : ""}>
-            Menu
+            {t.nav.menu}
           </Link>
         </li>
         <li>
           <Link
             to="/gallery" onClick={closeMenu}
             className={location.pathname === "/gallery" ? "active" : ""}>
-            Gallery
+            {t.nav.gallery}
           </Link>
         </li>
         <li>
           <Link
             to="/faq" onClick={closeMenu}
             className={location.pathname === "/faq" ? "active" : ""}>
-            FA Q
+            {t.nav.faq}
           </Link>
+        </li>
+        <li className="navbar-toggles">
+          <button
+            type="button"
+            className="lang-toggle-button"
+            onClick={toggleLanguage}
+            aria-label={t.nav.toggleLanguage}
+          >
+            {t.nav.toggleLabel}
+          </button>
+          <button
+            type="button"
+            className="theme-toggle-button"
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            aria-label={isDarkMode ? t.nav.lightMode : t.nav.darkMode}
+          >
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </button>
         </li>
         <li
           className={`navbar-button-wrapper ${showButton ? "show" : ""
             }`}>
           <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
-            Contact Us
+            {t.nav.contact}
           </Link>
-        </li>        <li>
-          <button
-            type="button"
-            className="theme-toggle-button"
-            onClick={() => setIsDarkMode((prev) => !prev)}
-            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {isDarkMode ? <FaSun /> : <FaMoon />}
-          </button>
         </li>
       </ul>
     </nav>

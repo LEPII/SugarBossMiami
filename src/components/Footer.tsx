@@ -5,16 +5,18 @@ import { FaEnvelope } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
+import { useLanguage } from "../i18n/LanguageContext";
 import logo21 from "../assets/logo21.png";
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <footer className="footer" id="site-footer">
       <div className="footer-column">
         <img src={logo21} alt="SugarBossMiami Logo" className="footer-logo" />
       </div>
       <div className="footer-column">
-        <h2>Contact Us</h2>
+        <h2>{t.footer.contact}</h2>
         <p>
           <FaPhone className="footer-icon" />
           <a href="tel:+7863579059">+1 (786) 357-9059</a>

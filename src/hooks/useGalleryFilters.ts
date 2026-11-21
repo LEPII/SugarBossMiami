@@ -8,6 +8,7 @@ export interface GalleryImage {
   slug: string;
   src: string;
   alt: string;
+  altEs?: string;
   filters: GalleryFilters;
 }
 
@@ -27,6 +28,7 @@ const galleryData: GalleryImage[] = catalogData
     slug: item.slug,
     src: item.src!,
     alt: item.alt!,
+    altEs: item.altEs,
     filters: item.filters!,
   }));
 

@@ -1,10 +1,12 @@
 import "../style/pages/gallery.css";
 import { FiChevronDown, FiX, FiTrash2 } from "react-icons/fi";
 import { CiFilter } from "react-icons/ci";
-import { filterCategories } from "../data/galleryFilters";
+import { filterCategories, getOptionLabel } from "../data/galleryFilters";
+import { useLanguage } from "../i18n/LanguageContext";
 import { useGalleryFilters } from "../hooks/useGalleryFilters";
 
 const Gallery = () => {
+  const { t, language } = useLanguage();
   const {
     selectedFilters,
     openCategory,
@@ -25,9 +27,9 @@ const Gallery = () => {
   return (
     <div className="gallery-container">
       <header className="gallery-header">
-        <h1 className="gallery-title">Our Sweet Gallery</h1>
+        <h1 className="gallery-title">{t.gallery.title}</h1>
         <h2 className="gallery-subtitle">
-          Explore our custom creations by filtering your preferences.
+          {t.gallery.subtitle}
         </h2>
       </header>
 
@@ -38,14 +40,14 @@ const Gallery = () => {
           onClick={openMobileFilter}
         >
           <CiFilter />
-          Filter
+          {t.gallery.filter}
         </button>
-        <span className="results-count-mobile">{filteredImages.length} results</span>
+        <span className="results-count-mobile">{filteredImages.length} {t.gallery.results}</span>
       </div>
 
       <div className="gallery-layout">
         <aside className="filter-sidebar">
-          <h2 className="filter-title">Filter Gallery</h2>
+          <h2 className="filter-title">{t.gallery.filterTitle}</h2>
 
           {anyFilterActive && (
             <div className="active-filters-row">
@@ -56,7 +58,7 @@ const Gallery = () => {
                     className="active-filter-chip"
                     onClick={() => removeSingleFilter(cat.key, option)}
                   >
-                    <span className="chip-text">{option.replace(/-/g, " ")}</span>
+                    <span className="chip-text">{getOptionLabel(option, language)}</span>
                     <FiX className="chip-x" />
                   </button>
                 ))
@@ -70,7 +72,7 @@ const Gallery = () => {
               onClick={clearAllFilters}
               className="clear-filters-top"
             >
-              Clear All Filters
+              {t.gallery.clearAll}
             </button>
           )}
 
@@ -83,7 +85,7 @@ const Gallery = () => {
                 className={`filter-category ${isOpen ? "open" : ""}`}
               >
                 <div className="filter-category-header">
-                  <h3 className="filter-category-title">{category.name}</h3>
+                  <h3 className="filter-category-title">{t.gallery.categories[category.key]}</h3>
 
                   <button
                     type="button"
@@ -107,7 +109,7 @@ const Gallery = () => {
                           : "filter-button btn"
                       }
                     >
-                      {option.replace(/-/g, " ")}
+                      {getOptionLabel(option, language)}
                     </button>
                   ))}
                 </div>
@@ -117,7 +119,7 @@ const Gallery = () => {
         </aside>
 
         <section className="gallery-content">
-          <span className="results-count-desktop">{filteredImages.length} results</span>
+          <span className="results-count-desktop">{filteredImages.length} {t.gallery.results}</span>
 
           {filteredImages.length > 0 ? (
             <div className="image-grid">
@@ -139,13 +141,13 @@ const Gallery = () => {
                     }}
                   />
                   <div className="card-body">
-                    <p className="card-title">{image.alt}</p>
+                    <p className="card-title">{language === "es" && image.altEs ? image.altEs : image.alt}</p>
                     <div className="card-tags">
                       {Object.values(image.filters)
                         .flat()
                         .map((tag, idx) => (
                           <span key={idx} className="card-tag">
-                            {tag.replace(/-/g, " ")}
+                            {getOptionLabel(tag, language)}
                           </span>
                         ))}
                     </div>
@@ -156,10 +158,10 @@ const Gallery = () => {
           ) : (
             <div className="no-results">
               <p className="no-results-text">
-                No images match your current filter selections.
+                {t.gallery.noResults}
               </p>
               <button onClick={clearAllFilters} className="show-all-button">
-                Show All Images
+                {t.gallery.showAll}
               </button>
             </div>
           )}
@@ -183,7 +185,7 @@ const Gallery = () => {
               className="lightbox-img"
             />
 
-            <p className="lightbox-caption">{lightboxImage.alt}</p>
+            <p className="lightbox-caption">{language === "es" && lightboxImage.altEs ? lightboxImage.altEs : lightboxImage.alt}</p>
           </div>
         </div>
       )}
@@ -202,7 +204,7 @@ const Gallery = () => {
               </button>
             </div>
 
-            <span className="results-count-mobile">{filteredImages.length} results</span>
+            <span className="results-count-mobile">{filteredImages.length} {t.gallery.results}</span>
             {anyFilterActive && (
               <button
                 type="button"
@@ -210,7 +212,7 @@ const Gallery = () => {
                 onClick={clearAllFilters}
               >
                 <FiTrash2 />
-                Clear
+                {t.gallery.clear}
               </button>
             )}
 
@@ -224,7 +226,7 @@ const Gallery = () => {
                       className="active-filter-chip"
                       onClick={() => removeSingleFilter(cat.key, opt)}
                     >
-                      {opt.replace(/-/g, " ")}
+                      {getOptionLabel(opt, language)}
                       <FiX className="chip-x" />
                     </button>
                   ))
@@ -236,7 +238,7 @@ const Gallery = () => {
               className="mobile-apply-filters"
               onClick={closeMobileFilter}
             >
-              View Cakes
+              {t.gallery.viewCakes}
             </button>
 
 
@@ -250,7 +252,7 @@ const Gallery = () => {
                 className={`filter-category ${isOpen ? "open" : ""}`}
               >
                 <div className="filter-category-header">
-                  <h3 className="filter-category-title">{category.name}</h3>
+                  <h3 className="filter-category-title">{t.gallery.categories[category.key]}</h3>
                   <button
                     type="button"
                     className={`filter-toggle ${isOpen ? "open" : ""}`}
@@ -275,7 +277,7 @@ const Gallery = () => {
                             : "filter-button"
                         }
                       >
-                        {option.replace(/-/g, " ")}
+                        {getOptionLabel(option, language)}
                       </button>
                     );
                   })}

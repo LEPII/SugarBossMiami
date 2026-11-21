@@ -1,6 +1,7 @@
 import "../style/pages/servicespage.css";
 import { FaCamera } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../i18n/LanguageContext";
 import { catalogData, type CatalogItem } from "../data/catalogData";
 
 interface MenuCategory {
@@ -26,21 +27,22 @@ const groupedMenuData: MenuCategory[] = Array.from(groupedMap).map(
 );
 
 const Menu: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-container">
       <header className="main-header-section">
         <h1 className="main-header-title">
-          Crafted Cakes
+          {t.menu.title}
         </h1>
         <h2 className="main-header-subtitle">
-          Where Imagination Meets Deliciousness
+          {t.menu.subtitle}
         </h2>
       </header>
 
       <main className="menu-content-area">
         {groupedMenuData.map((category, index) => (
           <section key={index} className="menu-category-section">
-            <h2 className="category-title">{category.title}</h2>
+            <h2 className="category-title">{t.menu.sections[category.title] ?? category.title}</h2>
             <ul className="category-items-list">
               {category.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="menu-item">
@@ -57,7 +59,7 @@ const Menu: React.FC = () => {
                         item.menuGalleryFilter.key
                       )}&filterValue=${encodeURIComponent(item.menuGalleryFilter.option)}&item=${encodeURIComponent(item.slug)}`}>
                         <br />
-                        <span className="menu-item-view-text">View More</span>
+                        <span className="menu-item-view-text">{t.menu.viewMore}</span>
                         <FaCamera className="menu-item-icon" />
                       </Link>
                     )}
@@ -69,8 +71,7 @@ const Menu: React.FC = () => {
       </main>
       <footer className="menu-footer-section">
         <p className="legend-text">
-          <span className="premium-indicator">*</span> Indicates a premium
-          option.
+          <span className="premium-indicator">*</span> {t.menu.premiumLegend}
         </p>
       </footer>
     </div>
