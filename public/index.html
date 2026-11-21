@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#fff7fb" />
     <script>
-      // Apply the saved theme before the page paints, so the browser bars
-      // and background start in the right mode (no light/dark flash)
       try {
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
