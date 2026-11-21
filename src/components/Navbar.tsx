@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/logo1.png";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -11,6 +11,7 @@ const Navbar = () => {
     return localStorage.getItem("theme") === "dark";
   });
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const { t, toggleLanguage } = useLanguage();
   const closeMenu = () => setIsOpen(false);
@@ -45,7 +46,7 @@ const Navbar = () => {
   }, [isDarkMode]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && window.matchMedia("(max-width: 768px)").matches) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
@@ -56,8 +57,19 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav ref={navRef} className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
           <img src={Logo} alt="Hero Pic" />
@@ -95,14 +107,7 @@ const Navbar = () => {
             {t.nav.faq}
           </Link>
         </li>
-        <li
-          className={`navbar-button-wrapper ${showButton ? "show" : ""
-            }`}>
-          <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
-            {t.nav.contact}
-          </Link>
-        </li>
-        <li>
+        <li className="navbar-toggles">
           <button
             type="button"
             className="lang-toggle-button"
@@ -111,8 +116,6 @@ const Navbar = () => {
           >
             {t.nav.toggleLabel}
           </button>
-        </li>
-        <li>
           <button
             type="button"
             className="theme-toggle-button"
@@ -121,6 +124,13 @@ const Navbar = () => {
           >
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
+        </li>
+        <li
+          className={`navbar-button-wrapper ${showButton ? "show" : ""
+            }`}>
+          <Link to="/contact" onClick={closeMenu} className="navbar-button btn btn--primary">
+            {t.nav.contact}
+          </Link>
         </li>
       </ul>
     </nav>
