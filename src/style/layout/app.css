@@ -16,6 +16,14 @@ body {
   color: var(--color-page-text);
 }
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 .app-wrapper {
   display: flex;
   flex-direction: column;

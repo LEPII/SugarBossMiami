@@ -56,8 +56,11 @@
 
 .hero-headline {
   font-weight: 300;
-  margin-top: -0.5em;
+  margin-top: -0.3em;
   margin-bottom: 1em;
+  max-width: 100%;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
 .hero-cta {
@@ -460,8 +463,11 @@
   }
 
   .hero-headline {
-    font-size: 2.5em;
-    white-space: nowrap;
+    font-size: clamp(2em, 9vw, 2.5em);
+  }
+
+  .hero-content {
+    padding: 50px 20px;
   }
   .services-header-text {
     margin: 2.5em 0em;

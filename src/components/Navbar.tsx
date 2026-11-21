@@ -43,6 +43,9 @@ const Navbar = () => {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", isDarkMode ? "#00181e" : "#fff7fb");
   }, [isDarkMode]);
 
   useEffect(() => {
